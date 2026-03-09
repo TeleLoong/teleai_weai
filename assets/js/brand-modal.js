@@ -6,7 +6,7 @@
   if (!trigger || !modal || !navbar) return;
 
   const closeButton = modal.querySelector("[data-brand-modal-close]");
-  const overlayVideos = modal.querySelectorAll(".brand-image-modal__overlay-video");
+  const overlayVideos = modal.querySelectorAll("video");
   const root = document.documentElement;
 
   const setModalTop = () => {

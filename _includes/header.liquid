@@ -144,11 +144,11 @@
     class="brand-image-modal"
     aria-hidden="true"
     style="
-      --brand-modal-image: url('{{ '/assets/img/TeleAI-涉水具身智能团队_.png' | relative_url }}');
+      --brand-modal-image: url('{{ '/assets/img/TeleAI-涉水具身智能团队.png' | relative_url }}');
       --rov-box-left: 27.23%;
-      --rov-box-top: 23.75%;
-      --rov-box-width: 18.01%;
-      --rov-box-height: 21.0%;
+      --rov-box-top: 25.14%;
+      --rov-box-width: 17.58%;
+      --rov-box-height: 19.79%;
       --wetplug-box-left: 9.3%;
       --wetplug-box-top: 67.0%;
       --wetplug-box-width: 16.6%;
@@ -157,18 +157,28 @@
       --wetplug-top-box-top: 50.5%;
       --wetplug-top-box-width: 16.6%;
       --wetplug-top-box-height: 16.2%;
-      --uav-box-left: 50.16%;
-      --uav-box-top: 78.26%;
-      --uav-box-width: 14.61%;
-      --uav-box-height: 17.01%;
-      --uav-mid-box-left: 64.88%;
-      --uav-mid-box-top: 78.26%;
-      --uav-mid-box-width: 15.86%;
-      --uav-mid-box-height: 17.08%;
-      --uav-right-box-left: 80.74%;
-      --uav-right-box-top: 78.26%;
-      --uav-right-box-width: 15.86%;
-      --uav-right-box-height: 17.08%;
+      --uav-box-left: 51.02%;
+      --uav-box-top: 77.64%;
+      --uav-box-width: 14.14%;
+      --uav-box-height: 17.43%;
+      --uav-mid-box-left: 65.27%;
+      --uav-mid-box-top: 77.64%;
+      --uav-mid-box-width: 14.14%;
+      --uav-mid-box-height: 17.43%;
+      --uav-right-box-left: 79.53%;
+      --uav-right-box-top: 77.64%;
+      --uav-right-box-width: 14.18%;
+      --uav-right-box-height: 17.43%;
+      --cable-panel-left: 27.19%;
+      --cable-panel-top: 49.60%;
+      --cable-panel-width: 18.28%;
+      --cable-panel-height: 34.10%;
+      --cable-panel-inset-top: 1.60%;
+      --cable-panel-inset-bottom: 6.00%;
+      --auv-guide-box-left: 78.95%;
+      --auv-guide-box-top: 26.18%;
+      --auv-guide-box-width: 17.77%;
+      --auv-guide-box-height: 36.25%;
       --wetplug-label-left: 13.6%;
       --wetplug-label-top: 86.7%;
       --wetplug-label-width: 14.2%;
@@ -179,7 +189,7 @@
     <div class="brand-image-modal__stage">
       <img
         class="brand-image-modal__img"
-        src="{{ '/assets/img/TeleAI-涉水具身智能团队_.png' | relative_url }}"
+        src="{{ '/assets/img/TeleAI-涉水具身智能团队.png' | relative_url }}"
         alt=""
         aria-hidden="true"
         draggable="false"
@@ -244,12 +254,50 @@
         preload="metadata"
         aria-label="无人机起飞视频3"
       ></video>
-      <span class="brand-image-modal__overlay-text brand-image-modal__overlay-text--wetplug-label" aria-label="深海湿插拔线缆目标检测跟踪">
-        <span class="brand-image-modal__overlay-text-line">深海湿插拔线缆</span>
-        <span class="brand-image-modal__overlay-text-line"
-          >目标检测跟踪<span class="brand-image-modal__overlay-text-pad" aria-hidden="true">缆</span></span
-        >
-      </span>
+      <div class="brand-image-modal__overlay-panel brand-image-modal__overlay-panel--cable" aria-label="海缆巡检原始与增强分屏视频">
+        <video
+          class="brand-image-modal__overlay-panel-video"
+          src="{{ '/assets/mp4/原始图像.mp4' | relative_url }}"
+          muted
+          autoplay
+          loop
+          playsinline
+          preload="metadata"
+          aria-label="海缆巡检原始图像视频"
+        ></video>
+        <video
+          class="brand-image-modal__overlay-panel-video"
+          src="{{ '/assets/mp4/复原增强图像.mp4' | relative_url }}"
+          muted
+          autoplay
+          loop
+          playsinline
+          preload="metadata"
+          aria-label="海缆巡检复原增强图像视频"
+        ></video>
+      </div>
+      <div class="brand-image-modal__overlay-panel brand-image-modal__overlay-panel--auv-guide" aria-label="AUV水下回收光学导引分屏视频">
+        <video
+          class="brand-image-modal__overlay-panel-video"
+          src="{{ '/assets/mp4/AUV水下回收光学导引1.mp4' | relative_url }}"
+          muted
+          autoplay
+          loop
+          playsinline
+          preload="metadata"
+          aria-label="AUV水下回收光学导引视频1"
+        ></video>
+        <video
+          class="brand-image-modal__overlay-panel-video"
+          src="{{ '/assets/mp4/AUV水下回收光学导引2.mp4' | relative_url }}"
+          muted
+          autoplay
+          loop
+          playsinline
+          preload="metadata"
+          aria-label="AUV水下回收光学导引视频2"
+        ></video>
+      </div>
     </div>
   </div>
   {% if site.enable_progressbar %}

@@ -1,0 +1,80 @@
+---
+layout: default
+---
+
+{% assign research = page.research | default: empty %}
+
+<div class="post">
+  {% unless page.hide_page_header %}
+    <header class="post-header">
+      <h1 class="post-title">{{ page.title }}</h1>
+      <p class="post-description">{{ page.description }}</p>
+    </header>
+  {% endunless %}
+
+  <article>
+    <div class="research-page">
+      {% if research.intro %}
+        <div class="research-intro">
+          {{ research.intro | markdownify }}
+        </div>
+      {% endif %}
+
+      {% if research.quicklinks and research.quicklinks.size > 0 %}
+        <div class="research-quicklinks" aria-label="Quick links">
+          {% for link in research.quicklinks %}
+            {% if link.label and link.url %}
+              <a class="btn btn-sm btn-outline-primary" href="{{ link.url | relative_url }}">{{ link.label }}</a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if research.cards and research.cards.size > 0 %}
+        <div class="research-grid row">
+          {% for card in research.cards %}
+            <div class="col-12 col-lg-6">
+              <section class="research-card" aria-label="{{ card.title | default: 'Research card' }}">
+                {% if card.title %}
+                  <h2>{{ card.title }}</h2>
+                {% endif %}
+
+                {% if card.description %}
+                  <div class="research-desc">
+                    {{ card.description | markdownify }}
+                  </div>
+                {% endif %}
+
+                {% if card.bullets and card.bullets.size > 0 %}
+                  <ul>
+                    {% for bullet in card.bullets %}
+                      {% if bullet %}
+                        <li>{{ bullet | markdownify | remove: '<p>' | remove: '</p>' }}</li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+
+                {% if card.image %}
+                  <img
+                    class="research-image"
+                    src="{{ card.image | relative_url }}"
+                    alt="{{ card.image_alt | default: card.title | default: 'Research image' }}"
+                  >
+                {% endif %}
+              </section>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if content and content != blank %}
+      {{ content }}
+    {% endif %}
+  </article>
+
+  {% if site.giscus and page.giscus_comments %}
+    {% include giscus.liquid %}
+  {% endif %}
+</div>
