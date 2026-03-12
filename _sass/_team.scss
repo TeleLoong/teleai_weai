@@ -168,15 +168,16 @@
 }
 
 .team-card--lead {
-  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
   gap: 1.75rem;
   align-items: start;
   text-align: left;
 }
 
 .team-card--lead .team-card-img img {
-  height: 100%;
-  min-height: 320px;
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
 }
 
 .team-card--lead .team-card-body {
@@ -264,8 +265,9 @@
   }
 
   .team-card--lead .team-card-img img {
-    height: 240px;
+    height: auto;
     min-height: 0;
+    object-fit: contain;
   }
 
   .team-card--lead .team-card-body {

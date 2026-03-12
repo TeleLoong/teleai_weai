@@ -187,6 +187,12 @@
 
 <!-- Jupyter Open External Links New Tab -->
 <script defer src="{{ '/assets/js/jupyter_new_tab.js' | relative_url | bust_file_cache }}"></script>
+{% if page.layout == 'reports' %}
+  <script defer src="{{ '/assets/js/reports-video.js' | relative_url | bust_file_cache }}"></script>
+{% endif %}
+{% if page.layout == 'research' %}
+  <script defer src="{{ '/assets/js/research-video.js' | relative_url | bust_file_cache }}"></script>
+{% endif %}
 
 <!-- Badges -->
 {% if site.enable_publication_badges.altmetric %}

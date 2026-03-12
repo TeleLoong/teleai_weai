@@ -1,0 +1,324 @@
+---
+layout: default
+---
+
+{% assign reports = page.reports | default: empty %}
+{% assign show_download_link = reports.show_download_link | default: true %}
+{% assign report_player_build = "reports-20260312-3" %}
+
+{% assign report_files = site.static_files | where_exp: "f", "f.path contains '/assets/reports/'" %}
+{% assign report_video_files = report_files | where_exp: "f", "f.extname == '.mp4'" %}
+{% assign video_records_blob = "" %}
+{% assign news_records_blob = "" %}
+
+{% for f in report_files %}
+  {% assign ext = f.extname | downcase %}
+  {% assign raw_title = f.basename | default: f.name %}
+
+  {% if raw_title contains "__poster" or raw_title contains "__low" or raw_title contains "~$" %}
+    {% continue %}
+  {% endif %}
+
+  {% assign is_video = false %}
+  {% assign is_image = false %}
+  {% if ext == ".mp4" %}
+    {% assign is_video = true %}
+  {% elsif ext == ".png" or ext == ".jpg" or ext == ".jpeg" or ext == ".webp" %}
+    {% assign is_image = true %}
+  {% endif %}
+
+  {% unless is_video or is_image %}
+    {% continue %}
+  {% endunless %}
+
+  {% assign clean_title = raw_title | replace: "_", " " | replace: "-", " " | strip %}
+  {% assign clean_title = clean_title | replace: "  ", " " | replace: "  ", " " %}
+  {% assign slug = raw_title | slugify %}
+  {% assign tokens = slug | split: "-" %}
+
+  {% assign date_key = "" %}
+  {% assign date_label = "未标注日期" %}
+
+  {% for token in tokens %}
+    {% if date_key != "" %}
+      {% continue %}
+    {% endif %}
+
+    {% assign token_size = token | size %}
+    {% assign year_prefix = token | slice: 0, 2 %}
+
+    {% if token_size == 8 and year_prefix == "20" %}
+      {% assign nondigit = token | remove: "0" | remove: "1" | remove: "2" | remove: "3" | remove: "4" | remove: "5" | remove: "6" | remove: "7" | remove: "8" | remove: "9" %}
+      {% if nondigit == "" %}
+        {% assign date_key = token %}
+      {% endif %}
+    {% elsif token_size > 8 and year_prefix == "20" %}
+      {% assign candidate = token | slice: 0, 8 %}
+      {% assign nondigit = candidate | remove: "0" | remove: "1" | remove: "2" | remove: "3" | remove: "4" | remove: "5" | remove: "6" | remove: "7" | remove: "8" | remove: "9" %}
+      {% if nondigit == "" %}
+        {% assign date_key = candidate %}
+      {% endif %}
+    {% elsif token_size == 4 and year_prefix == "20" %}
+      {% assign next_index = forloop.index %}
+      {% assign next2_index = forloop.index | plus: 1 %}
+      {% assign month_token = tokens[next_index] %}
+      {% assign day_token = tokens[next2_index] %}
+      {% if month_token and day_token and month_token.size == 2 and day_token.size == 2 %}
+        {% assign candidate = token | append: month_token | append: day_token %}
+        {% assign nondigit = candidate | remove: "0" | remove: "1" | remove: "2" | remove: "3" | remove: "4" | remove: "5" | remove: "6" | remove: "7" | remove: "8" | remove: "9" %}
+        {% if nondigit == "" %}
+          {% assign date_key = candidate %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% if date_key != "" %}
+    {% assign yyyy = date_key | slice: 0, 4 %}
+    {% assign mm = date_key | slice: 4, 2 %}
+    {% assign dd = date_key | slice: 6, 2 %}
+    {% assign date_label = yyyy | append: "-" | append: mm | append: "-" | append: dd %}
+    {% assign date_num = date_key | plus: 0 %}
+    {% assign date_inv = 99999999 | minus: date_num %}
+    {% capture date_inv_padded %}00000000{{ date_inv }}{% endcapture %}
+    {% assign date_inv_key = date_inv_padded | slice: -8, 8 %}
+    {% assign sort_prefix = "0_" %}
+  {% else %}
+    {% assign date_inv_key = "99999999" %}
+    {% assign sort_prefix = "1_" %}
+  {% endif %}
+
+  {% assign sort_name = clean_title | downcase %}
+  {% capture record_line -%}
+{{ sort_prefix }}{{ date_inv_key }}_{{ sort_name }}<::>{{ f.path }}<::>{{ clean_title }}<::>{{ date_label }}
+{%- endcapture %}
+
+  {% if is_video %}
+    {% capture video_records_blob %}{{ video_records_blob }}{{ record_line }}<:ROW:>{% endcapture %}
+  {% elsif is_image %}
+    {% capture news_records_blob %}{{ news_records_blob }}{{ record_line }}<:ROW:>{% endcapture %}
+  {% endif %}
+{% endfor %}
+
+{% assign video_records = video_records_blob | split: "<:ROW:>" | sort_natural %}
+{% assign news_records = news_records_blob | split: "<:ROW:>" | sort_natural %}
+
+<div class="post reports-page">
+  {% unless page.hide_page_header %}
+    <header class="post-header">
+      <h1 class="post-title">{{ page.title }}</h1>
+      <p class="post-description">{{ page.description }}</p>
+    </header>
+  {% endunless %}
+
+  <article>
+    <div class="reports-content" data-report-template-build="{{ report_player_build }}">
+      {% if reports.intro %}
+        <p class="reports-intro">{{ reports.intro }}</p>
+      {% endif %}
+
+      {% if video_records_blob != "" %}
+        <section class="reports-section reports-section--videos" aria-labelledby="reports-videos-title">
+          <div class="reports-section-heading">
+            <h2 class="reports-section-title" id="reports-videos-title">视频报道</h2>
+            <p class="reports-section-description">按时间倒序展示团队公开播出的电视报道、采访和纪录片内容。</p>
+          </div>
+
+          <div class="reports-timeline" aria-label="视频报道时间轴">
+            {% for row in video_records %}
+              {% if row == "" %}
+                {% continue %}
+              {% endif %}
+              {% assign fields = row | split: "<::>" %}
+              {% assign file_path = fields[1] %}
+              {% assign title = fields[2] %}
+              {% assign date_label = fields[3] %}
+              {% assign report_id = "report-video-" | append: forloop.index0 %}
+              {% assign playback_path = file_path %}
+              {% assign original_path = file_path %}
+              {% assign poster_path = file_path | replace: ".mp4", "__poster.jpg" %}
+              {% assign poster_file = report_files | where: "path", poster_path | first %}
+              {% assign original_busted_url = original_path | bust_file_cache | relative_url %}
+              {% assign original_busted_parts = original_busted_url | split: "?" %}
+              {% assign original_url = original_busted_parts[0] | uri_escape | replace: "+", "%2B" | replace: "(", "%28" | replace: ")", "%29" %}
+              {% if original_busted_parts.size > 1 %}
+                {% assign original_url = original_url | append: "?" | append: original_busted_parts[1] %}
+              {% endif %}
+              {% assign playback_busted_url = playback_path | bust_file_cache | relative_url %}
+              {% assign playback_busted_parts = playback_busted_url | split: "?" %}
+              {% assign playback_url = playback_busted_parts[0] | uri_escape | replace: "+", "%2B" | replace: "(", "%28" | replace: ")", "%29" %}
+              {% if playback_busted_parts.size > 1 %}
+                {% assign playback_url = playback_url | append: "?" | append: playback_busted_parts[1] %}
+              {% endif %}
+              {% assign original_link_url = original_path | relative_url | uri_escape | replace: "+", "%2B" | replace: "(", "%28" | replace: ")", "%29" %}
+              {% if poster_file %}
+                {% assign poster_busted_url = poster_path | bust_file_cache | relative_url %}
+                {% assign poster_busted_parts = poster_busted_url | split: "?" %}
+                {% assign poster_url = poster_busted_parts[0] | uri_escape | replace: "+", "%2B" | replace: "(", "%28" | replace: ")", "%29" %}
+                {% if poster_busted_parts.size > 1 %}
+                  {% assign poster_url = poster_url | append: "?" | append: poster_busted_parts[1] %}
+                {% endif %}
+              {% endif %}
+
+              <article class="report-item">
+                <div class="report-date">
+                  <span class="report-date-chip">{{ date_label }}</span>
+                </div>
+
+                <div class="report-card">
+                  <div class="report-cover">
+                    <video
+                      class="report-media report-media--video"
+                      preload="metadata"
+                      playsinline
+                      data-report-video
+                      data-report-id="{{ report_id }}"
+                      data-report-template-build="{{ report_player_build }}"
+                      data-report-has-cache-bust="true"
+                      data-original-src="{{ original_url }}"
+                      data-playback-src="{{ playback_url }}"
+                      {% if poster_file %}
+                        poster="{{ poster_url }}"
+                      {% endif %}
+                    >
+                      <source src="{{ playback_url }}" type="video/mp4">
+                      您的浏览器暂不支持视频播放，请使用下方链接打开原文件。
+                    </video>
+                    <div class="report-video-status" data-report-video-status aria-live="polite"></div>
+                    <div class="report-player-controls" data-report-player-controls>
+                      <button
+                        type="button"
+                        class="report-player-toggle"
+                        data-report-player-toggle
+                        aria-label="播放视频"
+                      >
+                        播放
+                      </button>
+                      <div
+                        class="report-player-progress"
+                        data-report-progress
+                        role="slider"
+                        tabindex="0"
+                        aria-label="视频进度"
+                        aria-valuemin="0"
+                        aria-valuemax="0"
+                        aria-valuenow="0"
+                      >
+                        <div class="report-player-progress__buffered" data-report-buffered></div>
+                        <div class="report-player-progress__played" data-report-played></div>
+                        <div class="report-player-progress__thumb" data-report-thumb></div>
+                      </div>
+                      <div class="report-player-time" aria-live="off">
+                        <span data-report-current-time>0:00</span>
+                        <span>/</span>
+                        <span data-report-duration>0:00</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="report-body">
+                    <h3 class="report-title">{{ title }}</h3>
+
+                    <div class="report-meta">
+                      <span class="report-tag">视频报道</span>
+                    </div>
+
+                    {% if show_download_link %}
+                      <a class="report-link" href="{{ original_link_url }}" target="_blank" rel="noopener noreferrer">打开原文件</a>
+                    {% endif %}
+                  </div>
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+      {% endif %}
+
+      {% if news_records_blob != "" %}
+        <section class="reports-section reports-section--news" aria-labelledby="reports-news-title">
+          <div class="reports-section-heading">
+            <h2 class="reports-section-title" id="reports-news-title">新闻报道</h2>
+            <p class="reports-section-description">媒体转发与新闻图文统一收纳在这里，默认摘要展示，点击卡片可全屏查看完整内容。</p>
+          </div>
+
+          <div class="reports-news-grid" aria-label="新闻报道卡片列表">
+            {% for row in news_records %}
+              {% if row == "" %}
+                {% continue %}
+              {% endif %}
+              {% assign fields = row | split: "<::>" %}
+              {% assign file_path = fields[1] %}
+              {% assign title = fields[2] %}
+              {% assign date_label = fields[3] %}
+              {% assign preview_url = file_path | relative_url | uri_escape | replace: "+", "%2B" | replace: "(", "%28" | replace: ")", "%29" %}
+              {% assign original_link_url = preview_url %}
+              {% assign news_toggle_id = "report-news-toggle-" | append: forloop.index0 %}
+
+              <article class="report-news-card" data-report-news-card>
+                <button
+                  type="button"
+                  class="report-news-toggle"
+                  id="{{ news_toggle_id }}"
+                  data-report-news-toggle
+                  aria-expanded="false"
+                  data-report-news-title="{{ title | escape }}"
+                  data-report-news-date="{{ date_label | escape }}"
+                  data-report-news-image="{{ preview_url }}"
+                  data-report-news-link="{{ original_link_url }}"
+                >
+                  <span class="report-news-thumb-wrap">
+                    <img class="report-news-thumb" src="{{ preview_url }}" alt="{{ title }}" loading="lazy">
+                  </span>
+                  <span class="report-news-meta">
+                    <span class="report-tag report-tag--news">新闻报道</span>
+                    <span class="report-news-title">{{ title }}</span>
+                    {% if date_label != "未标注日期" %}
+                      <span class="report-news-date">{{ date_label }}</span>
+                    {% endif %}
+                  </span>
+                </button>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+      {% endif %}
+
+      {% if video_records_blob == "" and news_records_blob == "" %}
+        <div class="reports-empty">
+          暂无相关报道，后续将在这里持续更新。
+        </div>
+      {% endif %}
+
+      <div
+        class="reports-news-modal"
+        data-report-news-modal
+        aria-hidden="true"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="report-news-modal-title"
+      >
+        <div class="reports-news-modal__backdrop" data-report-news-close></div>
+        <div class="reports-news-modal__dialog" role="document">
+          <button type="button" class="reports-news-modal__close" data-report-news-close aria-label="关闭新闻预览">×</button>
+          <div class="reports-news-modal__content">
+            <div class="reports-news-modal__media">
+              <img class="reports-news-modal__image" data-report-news-modal-image src="" alt="">
+            </div>
+            <div class="reports-news-modal__body">
+              <span class="report-tag report-tag--news">新闻报道</span>
+              <h3 class="reports-news-modal__title" id="report-news-modal-title" data-report-news-modal-title></h3>
+              <p class="reports-news-modal__date" data-report-news-modal-date hidden></p>
+              {% if show_download_link %}
+                <a class="report-link reports-news-modal__link" data-report-news-modal-link href="" target="_blank" rel="noopener noreferrer">查看完整图片</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% if content and content != blank %}
+      {{ content }}
+    {% endif %}
+  </article>
+</div>

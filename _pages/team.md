@@ -28,10 +28,10 @@ team:
     - member_c
   lead:
     id: pi
-    name: "你的名字"
+    name: "孙老师"
     role: Principal Investigator
     subtitle: "Faculty, University XX"
-    image: assets/img/TeleAi.jpg
+    image: assets/team/sun-laoshi.jpg
     email: you@university.edu
     links:
       - label: Homepage

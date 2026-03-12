@@ -179,6 +179,8 @@
       --auv-guide-box-top: 26.18%;
       --auv-guide-box-width: 17.77%;
       --auv-guide-box-height: 36.25%;
+      --auv-guide-inset-top: 0%;
+      --auv-guide-inset-bottom: 0%;
       --wetplug-label-left: 13.6%;
       --wetplug-label-top: 86.7%;
       --wetplug-label-width: 14.2%;
@@ -204,26 +206,30 @@
         preload="metadata"
         aria-label="深海ROV海缆作业视频"
       ></video>
-      <video
-        class="brand-image-modal__overlay-video brand-image-modal__overlay-video--wetplug"
-        src="{{ '/assets/mp4/深海湿插拔线缆目标检测跟踪2.mp4' | relative_url }}"
-        muted
-        autoplay
-        loop
-        playsinline
-        preload="metadata"
-        aria-label="深海湿插拔线缆目标检测跟踪视频2"
-      ></video>
-      <video
-        class="brand-image-modal__overlay-video brand-image-modal__overlay-video--wetplug-top"
-        src="{{ '/assets/mp4/深海湿插拔线缆目标检测跟踪1.mp4' | relative_url }}"
-        muted
-        autoplay
-        loop
-        playsinline
-        preload="metadata"
-        aria-label="深海湿插拔线缆目标检测跟踪视频1"
-      ></video>
+      <div class="brand-image-modal__overlay-panel brand-image-modal__overlay-panel--wetplug" aria-label="深海湿插拔线缆目标检测跟踪分屏视频">
+        <video
+          class="brand-image-modal__overlay-panel-video brand-image-modal__overlay-panel-video--top"
+          src="{{ '/assets/mp4/深海湿插拔线缆目标检测跟踪1.mp4' | relative_url }}"
+          muted
+          autoplay
+          loop
+          playsinline
+          preload="metadata"
+          aria-label="深海湿插拔线缆目标检测跟踪视频1"
+        ></video>
+        <video
+          class="brand-image-modal__overlay-panel-video brand-image-modal__overlay-panel-video--bottom"
+          data-role="wetplug-2"
+          data-start="6.0"
+          src="{{ '/assets/mp4/深海湿插拔线缆目标检测跟踪2.mp4' | relative_url }}"
+          muted
+          autoplay
+          loop
+          playsinline
+          preload="auto"
+          aria-label="深海湿插拔线缆目标检测跟踪视频2"
+        ></video>
+      </div>
       <video
         class="brand-image-modal__overlay-video brand-image-modal__overlay-video--uav"
         src="{{ '/assets/mp4/无人机起飞图1.mp4' | relative_url }}"
@@ -256,7 +262,8 @@
       ></video>
       <div class="brand-image-modal__overlay-panel brand-image-modal__overlay-panel--cable" aria-label="海缆巡检原始与增强分屏视频">
         <video
-          class="brand-image-modal__overlay-panel-video"
+          class="brand-image-modal__overlay-panel-video brand-image-modal__overlay-panel-video--top"
+          data-role="cable-original-top"
           src="{{ '/assets/mp4/原始图像.mp4' | relative_url }}"
           muted
           autoplay
@@ -266,7 +273,7 @@
           aria-label="海缆巡检原始图像视频"
         ></video>
         <video
-          class="brand-image-modal__overlay-panel-video"
+          class="brand-image-modal__overlay-panel-video brand-image-modal__overlay-panel-video--bottom"
           src="{{ '/assets/mp4/复原增强图像.mp4' | relative_url }}"
           muted
           autoplay
@@ -278,18 +285,19 @@
       </div>
       <div class="brand-image-modal__overlay-panel brand-image-modal__overlay-panel--auv-guide" aria-label="AUV水下回收光学导引分屏视频">
         <video
-          class="brand-image-modal__overlay-panel-video"
-          src="{{ '/assets/mp4/AUV水下回收光学导引1.mp4' | relative_url }}"
-          data-start="1.0"
+          id="optical-guide-top-video"
+          class="brand-image-modal__overlay-panel-video brand-image-modal__overlay-panel-video--top"
+          data-role="optical-guide-top"
+          src="{{ '/assets/mp4/光学导引.mp4' | relative_url }}"
           muted
           autoplay
           loop
           playsinline
-          preload="metadata"
-          aria-label="AUV水下回收光学导引视频1"
+          preload="auto"
+          aria-label="光学导引视频"
         ></video>
         <video
-          class="brand-image-modal__overlay-panel-video"
+          class="brand-image-modal__overlay-panel-video brand-image-modal__overlay-panel-video--bottom"
           src="{{ '/assets/mp4/AUV水下回收光学导引2.mp4' | relative_url }}"
           muted
           autoplay

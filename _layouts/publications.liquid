@@ -15,6 +15,16 @@ layout: default
       {{ content }}
     {% endif %}
 
+    <div class="publications-category-bar" aria-label="成果分类">
+      <span class="publications-category-chip">论文</span>
+      <span class="publications-category-separator" aria-hidden="true">/</span>
+      <span class="publications-category-chip">专利</span>
+      <span class="publications-category-separator" aria-hidden="true">/</span>
+      <span class="publications-category-chip">视频展示</span>
+      <span class="publications-category-separator" aria-hidden="true">/</span>
+      <span class="publications-category-chip">项目</span>
+    </div>
+
     {% assign grouped_publications = page.manual_publications | group_by: "year" | sort: "name" | reverse %}
     {% if grouped_publications and grouped_publications.size > 0 %}
       <div class="publications publications--list publications--manual">

@@ -25,7 +25,7 @@ home:
       AI Group
     tagline: 面向真实涉水环境，让机器人看得清、学得会、动得稳。
     intro: 我们聚焦空海跨域具身智能体与涉水光学/视觉，推动从仿真到真实的系统级闭环验证与部署。
-    image: assets/img/Team.jpg
+    image: assets/img/Teampicture.jpg
     image_alt: Team photo
   hero_actions:
     - text: 研究方向
@@ -33,6 +33,9 @@ home:
       style: btn-primary
     - text: 研究成果
       url: /publications/
+      style: btn-outline-primary
+    - text: 相关报道
+      url: /reports/
       style: btn-outline-primary
     - text: 设备
       url: /equipment/
