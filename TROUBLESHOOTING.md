@@ -423,6 +423,41 @@ nav:
 
 ---
 
+### Reports video seek issues (black screen / disappears after dragging)
+
+**Problem:** On `/reports`, dragging the playhead to an unbuffered position can cause black screen or playback reset.
+
+**Solution:** Generate low-bitrate copies for smoother playback and posters for visual fallback:
+
+```bash
+./scripts/transcode_reports_videos.sh
+```
+
+Expected output:
+
+1. Original HD files are kept (unless `REWRITE_HD=true` is passed).
+2. A low-bitrate copy is generated as `filename__low.mp4`.
+3. A matching poster is generated as `filename__poster.jpg`.
+4. Script prints a summary with processed/low-generated/failed counts.
+
+Optional flags:
+
+```bash
+# Rewrite original HD files too (disabled by default)
+REWRITE_HD=true ./scripts/transcode_reports_videos.sh
+
+# Force regenerate low files even if they exist
+SKIP_EXISTING_LOW=false ./scripts/transcode_reports_videos.sh
+```
+
+If failures occur:
+
+1. Ensure `ffmpeg` is installed and available in `PATH`.
+2. Re-run the script and check the first error line for the specific file.
+3. Keep original videos in version control so failed files can be retried safely.
+
+---
+
 ## Getting Help
 
 If you're stuck:

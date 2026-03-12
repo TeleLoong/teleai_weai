@@ -30,6 +30,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/al-folio/publications/";
           },
+        },{id: "nav-相关报道",
+          title: "相关报道",
+          description: "实验室相关新闻、活动报道与技术成果传播。",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/al-folio/reports/";
+          },
         },{id: "nav-设备",
           title: "设备",
           description: "实验室照片与工作环境照片。",
@@ -37,8 +44,8 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/al-folio/equipment/";
           },
-        },{id: "nav-招聘",
-          title: "招聘",
+        },{id: "nav-加入我们",
+          title: "加入我们",
           description: "招聘信息与申请方式。",
           section: "Navigation",
           handler: () => {
