@@ -7,56 +7,56 @@ ninja.data = [{
     title: "主页",
     section: "Navigation",
     handler: () => {
-      window.location.href = "/al-folio/";
+      window.location.href = "/teleai/";
     },
   },{id: "nav-团队",
           title: "团队",
           description: "团队成员信息。",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/al-folio/team/";
+            window.location.href = "/teleai/team/";
           },
         },{id: "nav-研究方向",
           title: "研究方向",
           description: "面向空海跨域具身智能体与涉水光学/视觉的研究。",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/al-folio/research/";
+            window.location.href = "/teleai/research/";
           },
         },{id: "nav-研究成果",
           title: "研究成果",
           description: "论文、项目与学术成果，按时间倒序展示。",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/al-folio/publications/";
+            window.location.href = "/teleai/publications/";
           },
         },{id: "nav-相关报道",
           title: "相关报道",
           description: "实验室相关新闻、活动报道与技术成果传播。",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/al-folio/reports/";
+            window.location.href = "/teleai/reports/";
           },
         },{id: "nav-设备",
           title: "设备",
           description: "实验室照片与工作环境照片。",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/al-folio/equipment/";
+            window.location.href = "/teleai/equipment/";
           },
         },{id: "nav-加入我们",
           title: "加入我们",
           description: "招聘信息与申请方式。",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/al-folio/jobs/";
+            window.location.href = "/teleai/jobs/";
           },
         },{id: "nav-联系方式",
           title: "联系方式",
           description: "联系信息与加入方式。",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/al-folio/contact/";
+            window.location.href = "/teleai/contact/";
           },
         },{id: "post-google-gemini-updates-flash-1-5-gemma-2-and-project-astra",
         
@@ -85,7 +85,7 @@ ninja.data = [{
         title: 'CV',
         section: 'Socials',
         handler: () => {
-          window.open("/al-folio/assets/pdf/example_pdf.pdf", "_blank");
+          window.open("/teleai/assets/pdf/example_pdf.pdf", "_blank");
         },
       },{
         id: 'social-email',
@@ -106,7 +106,7 @@ ninja.data = [{
         title: 'RSS Feed',
         section: 'Socials',
         handler: () => {
-          window.open("/al-folio/feed.xml", "_blank");
+          window.open("/teleai/feed.xml", "_blank");
         },
       },{
         id: 'social-scholar',
