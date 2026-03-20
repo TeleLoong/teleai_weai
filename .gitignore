@@ -36,6 +36,8 @@ ffmpeg2pass-*.log.mbtree
 # Local tooling noise.
 .codex-temp/
 debug.log
+tmp/
+.tmp-team-white/
 
 # Office/WPS temporary lock files.
 assets/reports/~$*
