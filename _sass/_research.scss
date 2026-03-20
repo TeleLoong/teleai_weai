@@ -16,18 +16,40 @@
 .research-quicklinks {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.7rem;
+  gap: 0.75rem;
   margin: 0 0 1.5rem;
 
   .btn {
-    font-size: 0.95rem;
-    padding: 0.45rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    line-height: 1;
+    min-height: 2.9rem;
+    padding: 0.6rem 1.35rem;
+  }
+
+  .btn.btn-outline-primary {
     border-color: var(--global-divider-color);
     color: var(--global-theme-color);
 
     &:hover {
       border-color: var(--global-theme-color);
       background: var(--global-theme-color);
+      color: var(--global-hover-text-color);
+    }
+  }
+
+  .btn.btn-primary {
+    background: var(--global-theme-color);
+    border-color: var(--global-theme-color);
+    color: var(--global-hover-text-color);
+    padding-top: 0.66rem;
+    padding-bottom: 0.54rem;
+
+    &:hover {
+      background: var(--global-theme-color);
+      border-color: var(--global-theme-color);
       color: var(--global-hover-text-color);
     }
   }
@@ -38,8 +60,10 @@
 }
 
 .research-card {
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  min-height: 760px;
+  min-height: 560px;
   padding: 1.35rem 1.4rem;
   border: 1px solid var(--global-divider-color);
   border-radius: 16px;
@@ -76,7 +100,7 @@
   height: 240px;
   object-fit: cover;
   border-radius: 12px;
-  margin-top: 1rem;
+  margin-top: 0.9rem;
   border: 1px solid var(--global-divider-color);
 }
 
@@ -91,6 +115,7 @@
   }
 
   .research-card {
+    min-height: 500px;
     padding: 1rem 1.05rem;
 
     h2 {

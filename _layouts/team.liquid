@@ -1,9 +1,8 @@
 ---
 layout: page
 ---
-
 {% assign team = page.team | default: empty %}
-{% assign fixed_three_group_ids = "teachers|phd|ms" | split: "|" %}
+{% assign fixed_three_group_ids = 'teachers|phd|ms' | split: '|' %}
 {% assign has_current_members = false %}
 {% if team.groups %}
   {% for group in team.groups %}
@@ -54,12 +53,12 @@ layout: page
           {% assign group_members = group.members | default: empty %}
           {% if fixed_three_group_ids contains group.id %}
             {% assign last_member = group_members | last %}
-            {% assign placeholder_image = "assets/img/TeleAi.jpg" %}
+            {% assign placeholder_image = 'assets/img/TeleAi.jpg' %}
             {% if last_member and last_member.image %}
               {% assign placeholder_image = last_member.image %}
             {% endif %}
             {% assign missing_slots = 3 | minus: group_members.size %}
-            <div class="team-group team-group--fixed-three">
+            <div class="team-group team-group--fixed-three team-group--{{ group.id }}">
               <h3 class="team-group-title">{{ group.title }}</h3>
               <div class="team-grid-fixed-three">
                 {% for member in group_members %}

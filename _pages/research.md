@@ -13,10 +13,10 @@ research:
   quicklinks:
     - label: 研究成果
       url: /publications/
-    - label: 招聘
-      url: /jobs/
+      style: btn-primary
     - label: 设备
       url: /equipment/
+      style: btn-primary
   cards:
     - title: 空海跨域具身智能体
       description: 面向空中/海面/水下等复杂环境，实现感知—规划—控制一体化的具身智能系统。
@@ -24,8 +24,8 @@ research:
         - 跨域任务建模与策略学习（仿真到真实）
         - 多模态感知与鲁棒自主决策
         - 系统级闭环评测与真实场景部署
-      image: /assets/img/5.jpg
-      image_alt: 空海跨域具身智能体研究示意图
+      image: /assets/publication/空海跨域具身智能体系统演示cover.jpg
+      image_alt: 空海跨域具身智能体系统演示封面图
     - title: 涉水光学/视觉
       description: 研究涉水成像机理与视觉增强，提升水下/水面场景的可见性与任务可用性。
       bullets:

@@ -15,8 +15,21 @@
     "ghcr.io/devcontainers-extra/features/prettier:1.0.2": {}
   },
 
-  // Optionally: run jekyll serve automatically on container entering using the Docker entrypoint
-  "postAttachCommand": "./bin/entry_point.sh",
+  // Start the Jekyll manager once per container start instead of once per editor attach.
+  "postStartCommand": "./bin/post_attach.sh",
+  "forwardPorts": [8080, 35729],
+  "portsAttributes": {
+    "8080": {
+      "label": "Jekyll site",
+      "protocol": "http",
+      "onAutoForward": "openBrowserOnce"
+    },
+    "35729": {
+      "label": "LiveReload",
+      "protocol": "http",
+      "onAutoForward": "silent"
+    }
+  },
 
   "customizations": {
     "vscode": {

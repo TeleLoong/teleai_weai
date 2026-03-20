@@ -1,7 +1,6 @@
 ---
 layout: default
 ---
-
 <div class="home-page">
   {% include home/top_banner.liquid %}
 
@@ -11,10 +10,53 @@ layout: default
   {% assign research = home.research %}
   {% assign research_cards = research.cards %}
   {% assign team = home.team %}
-  {% assign team_members = team.members %}
+  {% assign team_members = team.members | default: empty %}
+  {% assign team_page = site.pages | where: 'permalink', '/team/' | first %}
+  {% assign team_page_data = team_page.team | default: empty %}
+  {% assign team_page_lead = team_page_data.lead | default: empty %}
+  {% assign team_page_groups = team_page_data.groups | default: empty %}
+  {% assign teachers_group = team_page_groups | where: 'id', 'teachers' | first %}
+  {% assign teachers_members = teachers_group.members | default: empty %}
+  {% if team_page_lead and teachers_members.size >= 4 %}
+    {% assign synced_team_members = '' | split: ',' %}
+    {% assign synced_team_members = synced_team_members | push: team_page_lead %}
+    {% assign synced_team_members = synced_team_members | push: teachers_members[0] %}
+    {% assign synced_team_members = synced_team_members | push: teachers_members[1] %}
+    {% assign synced_team_members = synced_team_members | push: teachers_members[2] %}
+    {% assign synced_team_members = synced_team_members | push: teachers_members[3] %}
+    {% assign team_members = synced_team_members %}
+  {% endif %}
   {% assign equipment = home.equipment %}
-  {% assign equipment_items = equipment.items %}
+  {% assign equipment_items = equipment.items | default: empty %}
+  {% assign equipment_page = site.pages | where: 'permalink', '/equipment/' | first %}
+  {% assign equipment_page_data = equipment_page.equipment | default: empty %}
+  {% assign equipment_lab = equipment_page_data.lab | default: empty %}
+  {% assign equipment_workspace = equipment_page_data.workspace | default: empty %}
+  {% assign equipment_lab_items = equipment_lab.items | default: empty %}
+  {% assign equipment_workspace_items = equipment_workspace.items | default: empty %}
+  {% if equipment_lab_items.size >= 3 and equipment_workspace_items.size >= 3 %}
+    {% assign synced_equipment_items = '' | split: ',' %}
+    {% assign synced_equipment_items = synced_equipment_items | push: equipment_lab_items[0] %}
+    {% assign synced_equipment_items = synced_equipment_items | push: equipment_lab_items[2] %}
+    {% assign synced_equipment_items = synced_equipment_items | push: equipment_workspace_items[0] %}
+    {% assign synced_equipment_items = synced_equipment_items | push: equipment_workspace_items[2] %}
+    {% assign equipment_items = synced_equipment_items %}
+  {% endif %}
   {% assign overview = home.overview %}
+  {% assign overview_rov = overview.rov | default: empty %}
+  {% assign overview_cable = overview.cable_inspection | default: empty %}
+  {% assign overview_cable_top = overview_cable.top | default: empty %}
+  {% assign overview_cable_bottom = overview_cable.bottom | default: empty %}
+  {% assign overview_wetplug = overview.wetplug | default: empty %}
+  {% assign overview_wetplug_top = overview_wetplug.top | default: empty %}
+  {% assign overview_wetplug_bottom = overview_wetplug.bottom | default: empty %}
+  {% assign overview_auv = overview.auv_guide | default: empty %}
+  {% assign overview_auv_top = overview_auv.top | default: empty %}
+  {% assign overview_auv_bottom = overview_auv.bottom | default: empty %}
+  {% assign overview_uav = overview.uav | default: empty %}
+  {% assign overview_uav_bottom_left = overview_uav.bottom_left | default: empty %}
+  {% assign overview_uav_bottom_mid = overview_uav.bottom_mid | default: empty %}
+  {% assign overview_uav_bottom_right = overview_uav.bottom_right | default: empty %}
   {% assign cta = home.cta %}
 
   {% assign hero_title = hero.title | default: site.title | default: 'Your Lab Name' %}
@@ -59,15 +101,6 @@ layout: default
             %}
           </div>
         {% endif %}
-      </div>
-    </div>
-  </section>
-
-  <section class="home-section home-highlights">
-    <div class="container">
-      <div class="home-highlights-grid">
-        <div class="home-highlight-box" aria-hidden="true"></div>
-        <div class="home-highlight-box" aria-hidden="true"></div>
       </div>
     </div>
   </section>
@@ -125,8 +158,8 @@ layout: default
         {% endif %}
       </div>
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4">
-        {% for member in team_members limit: 4 %}
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-5 home-team-grid">
+        {% for member in team_members limit: 5 %}
           <div class="col mb-4">
             {% assign member_url = member.url | default: team_url %}
             <a class="home-team-card-link" href="{{ member_url | relative_url }}">
@@ -168,19 +201,21 @@ layout: default
         {% endif %}
       </div>
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3">
-        {% for item in equipment_items limit: 3 %}
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4">
+        {% for item in equipment_items limit: 4 %}
           {% assign item_url = item.url | default: equipment_url %}
+          {% assign item_image = item.image | default: item.src %}
+          {% assign item_image_alt = item.image_alt | default: item.alt %}
           <div class="col mb-4">
             <a class="home-photo-link" href="{{ item_url | relative_url }}">
               <div class="home-photo">
-                {% if item.image %}
+                {% if item_image %}
                   {%
                     include figure.liquid
                     loading="lazy"
-                    path=item.image
+                    path=item_image
                     sizes="(min-width: 992px) 300px, 92vw"
-                    alt=item.image_alt
+                    alt=item_image_alt
                     class="home-photo-img"
                     cache_bust=true
                   %}
@@ -200,27 +235,6 @@ layout: default
           <h2>{{ overview.title | default: '项目总览图' }}</h2>
         </div>
 
-        {% assign overview_rov_video_url = '/assets/mp4/海缆作业.mp4' | bust_file_cache | relative_url %}
-        {% assign overview_rov_poster_url = '/assets/img/home-overview-posters/rov.jpg' | bust_file_cache | relative_url %}
-        {% assign overview_wetplug_top_video_url = '/assets/mp4/深海湿插拔线缆目标检测跟踪1.mp4' | bust_file_cache | relative_url %}
-        {% assign overview_wetplug_top_poster_url = '/assets/img/home-overview-posters/wetplug-top.jpg' | bust_file_cache | relative_url %}
-        {% assign overview_wetplug_bottom_video_url = '/assets/mp4/深海湿插拔线缆目标检测跟踪2.mp4' | bust_file_cache | relative_url %}
-        {% assign overview_wetplug_bottom_poster_url = '/assets/img/home-overview-posters/wetplug-bottom.jpg' | bust_file_cache | relative_url %}
-        {% assign overview_cable_top_video_url = '/assets/mp4/海缆巡检原始图像.mp4' | bust_file_cache | relative_url %}
-        {% assign overview_cable_top_poster_url = '/assets/img/home-overview-posters/cable-inspection-top.jpg' | bust_file_cache | relative_url %}
-        {% assign overview_cable_bottom_video_url = '/assets/mp4/复原增强图像.mp4' | bust_file_cache | relative_url %}
-        {% assign overview_cable_bottom_poster_url = '/assets/img/home-overview-posters/cable-inspection-bottom.jpg' | bust_file_cache | relative_url %}
-        {% assign overview_auv_guide_top_video_url = '/assets/mp4/光学导引.mp4' | bust_file_cache | relative_url %}
-        {% assign overview_auv_guide_top_poster_url = '/assets/img/home-overview-posters/auv-guide-top.jpg' | bust_file_cache | relative_url %}
-        {% assign overview_auv_guide_bottom_video_url = '/assets/mp4/AUV水下回收光学导引.mp4' | bust_file_cache | relative_url %}
-        {% assign overview_auv_guide_bottom_poster_url = '/assets/img/home-overview-posters/auv-guide-bottom.jpg' | bust_file_cache | relative_url %}
-        {% assign overview_uav_bottom_left_video_url = '/assets/mp4/无人机起飞图1.mp4' | bust_file_cache | relative_url %}
-        {% assign overview_uav_bottom_left_poster_url = '/assets/img/home-overview-posters/uav-bottom-left.jpg' | bust_file_cache | relative_url %}
-        {% assign overview_uav_bottom_mid_video_url = '/assets/mp4/无人机起飞图2.mp4' | bust_file_cache | relative_url %}
-        {% assign overview_uav_bottom_mid_poster_url = '/assets/img/home-overview-posters/uav-bottom-mid.jpg' | bust_file_cache | relative_url %}
-        {% assign overview_uav_bottom_right_video_url = '/assets/mp4/无人机起飞图3.mp4' | bust_file_cache | relative_url %}
-        {% assign overview_uav_bottom_right_poster_url = '/assets/img/home-overview-posters/uav-bottom-right.jpg' | bust_file_cache | relative_url %}
-
         <div class="home-photo home-photo--overview">
           <div class="home-overview-stage">
             <img
@@ -229,154 +243,259 @@ layout: default
               class="home-photo-img home-photo-img--overview"
               loading="lazy"
             >
-            <video
-              class="home-overview-video home-overview-video--rov"
-              data-home-overview-video
-              data-home-overview-poster="{{ overview_rov_poster_url }}"
-              src="{{ overview_rov_video_url }}"
-              poster="{{ overview_rov_poster_url }}"
-              muted
-              autoplay
-              loop
-              playsinline
-              webkit-playsinline
-              preload="metadata"
-              aria-label="深海ROV海缆作业视频"
-            ></video>
-            <div class="home-overview-panel home-overview-panel--cable-inspection" aria-label="海缆巡检原始图像与复原增强图像分屏视频">
-              <div class="home-overview-panel-media home-overview-panel-media--cable-inspection">
-                <video
-                  class="home-overview-panel-video home-overview-panel-video--top"
-                  data-home-overview-video
-                  data-home-overview-poster="{{ overview_cable_top_poster_url }}"
-                  src="{{ overview_cable_top_video_url }}"
-                  poster="{{ overview_cable_top_poster_url }}"
-                  muted
-                  autoplay
-                  loop
-                  playsinline
-                  webkit-playsinline
-                  preload="metadata"
-                  aria-label="海缆巡检原始图像视频"
-                ></video>
-                <video
-                  class="home-overview-panel-video home-overview-panel-video--bottom"
-                  data-home-overview-video
-                  data-home-overview-poster="{{ overview_cable_bottom_poster_url }}"
-                  src="{{ overview_cable_bottom_video_url }}"
-                  poster="{{ overview_cable_bottom_poster_url }}"
-                  muted
-                  autoplay
-                  loop
-                  playsinline
-                  webkit-playsinline
-                  preload="metadata"
-                  aria-label="复原增强图像视频"
-                ></video>
+
+            {% assign overview_rov_video = overview_rov.video | to_s | strip %}
+            {% assign overview_rov_poster = overview_rov.poster | to_s | strip %}
+            {% if overview_rov_video != '' %}
+              <video
+                class="home-overview-video home-overview-video--rov"
+                data-home-overview-video
+                {% if overview_rov_poster != '' %}
+                  data-home-overview-poster="{{ overview_rov_poster | bust_file_cache | relative_url }}"
+                {% endif %}
+                src="{{ overview_rov_video | bust_file_cache | relative_url }}"
+                {% if overview_rov_poster != '' %}
+                  poster="{{ overview_rov_poster | bust_file_cache | relative_url }}"
+                {% endif %}
+                muted
+                autoplay
+                loop
+                playsinline
+                webkit-playsinline
+                preload="{{ overview_rov.preload | default: 'metadata' }}"
+                aria-label="{{ overview_rov.aria_label | default: '深海ROV海缆作业视频' }}"
+              ></video>
+            {% endif %}
+
+            {% assign overview_cable_top_video = overview_cable_top.video | to_s | strip %}
+            {% assign overview_cable_bottom_video = overview_cable_bottom.video | to_s | strip %}
+            {% if overview_cable_top_video != '' or overview_cable_bottom_video != '' %}
+              <div
+                class="home-overview-panel home-overview-panel--cable-inspection"
+                aria-label="{{ overview_cable.aria_label | default: '海缆巡检原始图像与复原增强图像分屏视频' }}"
+              >
+                <div class="home-overview-panel-media home-overview-panel-media--cable-inspection">
+                  {% assign overview_cable_top_poster = overview_cable_top.poster | to_s | strip %}
+                  {% if overview_cable_top_video != '' %}
+                    <video
+                      class="home-overview-panel-video home-overview-panel-video--top"
+                      data-home-overview-video
+                      {% if overview_cable_top_poster != '' %}
+                        data-home-overview-poster="{{ overview_cable_top_poster | bust_file_cache | relative_url }}"
+                      {% endif %}
+                      src="{{ overview_cable_top_video | bust_file_cache | relative_url }}"
+                      {% if overview_cable_top_poster != '' %}
+                        poster="{{ overview_cable_top_poster | bust_file_cache | relative_url }}"
+                      {% endif %}
+                      muted
+                      autoplay
+                      loop
+                      playsinline
+                      webkit-playsinline
+                      preload="{{ overview_cable_top.preload | default: 'metadata' }}"
+                      aria-label="{{ overview_cable_top.aria_label | default: '海缆巡检原始图像视频' }}"
+                    ></video>
+                  {% endif %}
+
+                  {% assign overview_cable_bottom_poster = overview_cable_bottom.poster | to_s | strip %}
+                  {% if overview_cable_bottom_video != '' %}
+                    <video
+                      class="home-overview-panel-video home-overview-panel-video--bottom"
+                      data-home-overview-video
+                      {% if overview_cable_bottom_poster != '' %}
+                        data-home-overview-poster="{{ overview_cable_bottom_poster | bust_file_cache | relative_url }}"
+                      {% endif %}
+                      src="{{ overview_cable_bottom_video | bust_file_cache | relative_url }}"
+                      {% if overview_cable_bottom_poster != '' %}
+                        poster="{{ overview_cable_bottom_poster | bust_file_cache | relative_url }}"
+                      {% endif %}
+                      muted
+                      autoplay
+                      loop
+                      playsinline
+                      webkit-playsinline
+                      preload="{{ overview_cable_bottom.preload | default: 'metadata' }}"
+                      aria-label="{{ overview_cable_bottom.aria_label | default: '复原增强图像视频' }}"
+                    ></video>
+                  {% endif %}
+                </div>
               </div>
-            </div>
-            <div class="home-overview-panel home-overview-panel--wetplug" aria-label="深海湿插拔线缆目标检测跟踪分屏视频">
+            {% endif %}
+
+            {% assign overview_wetplug_top_video = overview_wetplug_top.video | to_s | strip %}
+            {% assign overview_wetplug_bottom_video = overview_wetplug_bottom.video | to_s | strip %}
+            {% if overview_wetplug_top_video != '' or overview_wetplug_bottom_video != '' %}
+              <div
+                class="home-overview-panel home-overview-panel--wetplug"
+                aria-label="{{ overview_wetplug.aria_label | default: '深海湿插拔线缆目标检测跟踪分屏视频' }}"
+              >
+                {% assign overview_wetplug_top_poster = overview_wetplug_top.poster | to_s | strip %}
+                {% if overview_wetplug_top_video != '' %}
+                  <video
+                    class="home-overview-panel-video home-overview-panel-video--top"
+                    data-home-overview-video
+                    {% if overview_wetplug_top_poster != '' %}
+                      data-home-overview-poster="{{ overview_wetplug_top_poster | bust_file_cache | relative_url }}"
+                    {% endif %}
+                    src="{{ overview_wetplug_top_video | bust_file_cache | relative_url }}"
+                    {% if overview_wetplug_top_poster != '' %}
+                      poster="{{ overview_wetplug_top_poster | bust_file_cache | relative_url }}"
+                    {% endif %}
+                    muted
+                    autoplay
+                    loop
+                    playsinline
+                    webkit-playsinline
+                    preload="{{ overview_wetplug_top.preload | default: 'metadata' }}"
+                    aria-label="{{ overview_wetplug_top.aria_label | default: '深海湿插拔线缆目标检测跟踪视频1' }}"
+                  ></video>
+                {% endif %}
+
+                {% assign overview_wetplug_bottom_poster = overview_wetplug_bottom.poster | to_s | strip %}
+                {% if overview_wetplug_bottom_video != '' %}
+                  <video
+                    class="home-overview-panel-video home-overview-panel-video--bottom"
+                    data-home-overview-video
+                    {% if overview_wetplug_bottom_poster != '' %}
+                      data-home-overview-poster="{{ overview_wetplug_bottom_poster | bust_file_cache | relative_url }}"
+                    {% endif %}
+                    src="{{ overview_wetplug_bottom_video | bust_file_cache | relative_url }}"
+                    {% if overview_wetplug_bottom_poster != '' %}
+                      poster="{{ overview_wetplug_bottom_poster | bust_file_cache | relative_url }}"
+                    {% endif %}
+                    muted
+                    autoplay
+                    loop
+                    playsinline
+                    webkit-playsinline
+                    preload="{{ overview_wetplug_bottom.preload | default: 'metadata' }}"
+                    aria-label="{{ overview_wetplug_bottom.aria_label | default: '深海湿插拔线缆目标检测跟踪视频2' }}"
+                  ></video>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            {% assign overview_auv_top_video = overview_auv_top.video | to_s | strip %}
+            {% assign overview_auv_bottom_video = overview_auv_bottom.video | to_s | strip %}
+            {% if overview_auv_top_video != '' or overview_auv_bottom_video != '' %}
+              <div
+                class="home-overview-panel home-overview-panel--auv-guide"
+                aria-label="{{ overview_auv.aria_label | default: 'AUV水下回收光学导引分屏视频' }}"
+              >
+                {% assign overview_auv_top_poster = overview_auv_top.poster | to_s | strip %}
+                {% if overview_auv_top_video != '' %}
+                  <video
+                    class="home-overview-panel-video home-overview-panel-video--top"
+                    data-home-overview-video
+                    {% if overview_auv_top_poster != '' %}
+                      data-home-overview-poster="{{ overview_auv_top_poster | bust_file_cache | relative_url }}"
+                    {% endif %}
+                    src="{{ overview_auv_top_video | bust_file_cache | relative_url }}"
+                    {% if overview_auv_top_poster != '' %}
+                      poster="{{ overview_auv_top_poster | bust_file_cache | relative_url }}"
+                    {% endif %}
+                    muted
+                    autoplay
+                    loop
+                    playsinline
+                    webkit-playsinline
+                    preload="{{ overview_auv_top.preload | default: 'metadata' }}"
+                    aria-label="{{ overview_auv_top.aria_label | default: '光学导引视频' }}"
+                  ></video>
+                {% endif %}
+
+                {% assign overview_auv_bottom_poster = overview_auv_bottom.poster | to_s | strip %}
+                {% if overview_auv_bottom_video != '' %}
+                  <video
+                    class="home-overview-panel-video home-overview-panel-video--bottom"
+                    data-home-overview-video
+                    {% if overview_auv_bottom_poster != '' %}
+                      data-home-overview-poster="{{ overview_auv_bottom_poster | bust_file_cache | relative_url }}"
+                    {% endif %}
+                    src="{{ overview_auv_bottom_video | bust_file_cache | relative_url }}"
+                    {% if overview_auv_bottom_poster != '' %}
+                      poster="{{ overview_auv_bottom_poster | bust_file_cache | relative_url }}"
+                    {% endif %}
+                    muted
+                    autoplay
+                    loop
+                    playsinline
+                    webkit-playsinline
+                    preload="{{ overview_auv_bottom.preload | default: 'metadata' }}"
+                    aria-label="{{ overview_auv_bottom.aria_label | default: 'AUV水下回收光学导引视频2' }}"
+                  ></video>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            {% assign overview_uav_bottom_left_video = overview_uav_bottom_left.video | to_s | strip %}
+            {% assign overview_uav_bottom_left_poster = overview_uav_bottom_left.poster | to_s | strip %}
+            {% if overview_uav_bottom_left_video != '' %}
               <video
-                class="home-overview-panel-video home-overview-panel-video--top"
+                class="home-overview-video home-overview-video--uav-bottom-left"
                 data-home-overview-video
-                data-home-overview-poster="{{ overview_wetplug_top_poster_url }}"
-                src="{{ overview_wetplug_top_video_url }}"
-                poster="{{ overview_wetplug_top_poster_url }}"
+                {% if overview_uav_bottom_left_poster != '' %}
+                  data-home-overview-poster="{{ overview_uav_bottom_left_poster | bust_file_cache | relative_url }}"
+                {% endif %}
+                src="{{ overview_uav_bottom_left_video | bust_file_cache | relative_url }}"
+                {% if overview_uav_bottom_left_poster != '' %}
+                  poster="{{ overview_uav_bottom_left_poster | bust_file_cache | relative_url }}"
+                {% endif %}
                 muted
                 autoplay
                 loop
                 playsinline
                 webkit-playsinline
-                preload="metadata"
-                aria-label="深海湿插拔线缆目标检测跟踪视频1"
+                preload="{{ overview_uav_bottom_left.preload | default: 'metadata' }}"
+                aria-label="{{ overview_uav_bottom_left.aria_label | default: '无人机起飞视频1' }}"
               ></video>
+            {% endif %}
+
+            {% assign overview_uav_bottom_mid_video = overview_uav_bottom_mid.video | to_s | strip %}
+            {% assign overview_uav_bottom_mid_poster = overview_uav_bottom_mid.poster | to_s | strip %}
+            {% if overview_uav_bottom_mid_video != '' %}
               <video
-                class="home-overview-panel-video home-overview-panel-video--bottom"
+                class="home-overview-video home-overview-video--uav-bottom-mid"
                 data-home-overview-video
-                data-home-overview-poster="{{ overview_wetplug_bottom_poster_url }}"
-                src="{{ overview_wetplug_bottom_video_url }}"
-                poster="{{ overview_wetplug_bottom_poster_url }}"
+                {% if overview_uav_bottom_mid_poster != '' %}
+                  data-home-overview-poster="{{ overview_uav_bottom_mid_poster | bust_file_cache | relative_url }}"
+                {% endif %}
+                src="{{ overview_uav_bottom_mid_video | bust_file_cache | relative_url }}"
+                {% if overview_uav_bottom_mid_poster != '' %}
+                  poster="{{ overview_uav_bottom_mid_poster | bust_file_cache | relative_url }}"
+                {% endif %}
                 muted
                 autoplay
                 loop
                 playsinline
                 webkit-playsinline
-                preload="metadata"
-                aria-label="深海湿插拔线缆目标检测跟踪视频2"
+                preload="{{ overview_uav_bottom_mid.preload | default: 'metadata' }}"
+                aria-label="{{ overview_uav_bottom_mid.aria_label | default: '无人机起飞视频2' }}"
               ></video>
-            </div>
-            <div class="home-overview-panel home-overview-panel--auv-guide" aria-label="AUV水下回收光学导引分屏视频">
+            {% endif %}
+
+            {% assign overview_uav_bottom_right_video = overview_uav_bottom_right.video | to_s | strip %}
+            {% assign overview_uav_bottom_right_poster = overview_uav_bottom_right.poster | to_s | strip %}
+            {% if overview_uav_bottom_right_video != '' %}
               <video
-                class="home-overview-panel-video home-overview-panel-video--top"
+                class="home-overview-video home-overview-video--uav-bottom-right"
                 data-home-overview-video
-                data-home-overview-poster="{{ overview_auv_guide_top_poster_url }}"
-                src="{{ overview_auv_guide_top_video_url }}"
-                poster="{{ overview_auv_guide_top_poster_url }}"
+                {% if overview_uav_bottom_right_poster != '' %}
+                  data-home-overview-poster="{{ overview_uav_bottom_right_poster | bust_file_cache | relative_url }}"
+                {% endif %}
+                src="{{ overview_uav_bottom_right_video | bust_file_cache | relative_url }}"
+                {% if overview_uav_bottom_right_poster != '' %}
+                  poster="{{ overview_uav_bottom_right_poster | bust_file_cache | relative_url }}"
+                {% endif %}
                 muted
                 autoplay
                 loop
                 playsinline
                 webkit-playsinline
-                preload="auto"
-                aria-label="光学导引视频"
+                preload="{{ overview_uav_bottom_right.preload | default: 'metadata' }}"
+                aria-label="{{ overview_uav_bottom_right.aria_label | default: '无人机起飞视频3' }}"
               ></video>
-              <video
-                class="home-overview-panel-video home-overview-panel-video--bottom"
-                data-home-overview-video
-                data-home-overview-poster="{{ overview_auv_guide_bottom_poster_url }}"
-                src="{{ overview_auv_guide_bottom_video_url }}"
-                poster="{{ overview_auv_guide_bottom_poster_url }}"
-                muted
-                autoplay
-                loop
-                playsinline
-                webkit-playsinline
-                preload="metadata"
-                aria-label="AUV水下回收光学导引视频2"
-              ></video>
-            </div>
-            <video
-              class="home-overview-video home-overview-video--uav-bottom-left"
-              data-home-overview-video
-              data-home-overview-poster="{{ overview_uav_bottom_left_poster_url }}"
-              src="{{ overview_uav_bottom_left_video_url }}"
-              poster="{{ overview_uav_bottom_left_poster_url }}"
-              muted
-              autoplay
-              loop
-              playsinline
-              webkit-playsinline
-              preload="metadata"
-              aria-label="无人机起飞视频1"
-            ></video>
-            <video
-              class="home-overview-video home-overview-video--uav-bottom-mid"
-              data-home-overview-video
-              data-home-overview-poster="{{ overview_uav_bottom_mid_poster_url }}"
-              src="{{ overview_uav_bottom_mid_video_url }}"
-              poster="{{ overview_uav_bottom_mid_poster_url }}"
-              muted
-              autoplay
-              loop
-              playsinline
-              webkit-playsinline
-              preload="metadata"
-              aria-label="无人机起飞视频2"
-            ></video>
-            <video
-              class="home-overview-video home-overview-video--uav-bottom-right"
-              data-home-overview-video
-              data-home-overview-poster="{{ overview_uav_bottom_right_poster_url }}"
-              src="{{ overview_uav_bottom_right_video_url }}"
-              poster="{{ overview_uav_bottom_right_poster_url }}"
-              muted
-              autoplay
-              loop
-              playsinline
-              webkit-playsinline
-              preload="metadata"
-              aria-label="无人机起飞视频3"
-            ></video>
+            {% endif %}
           </div>
         </div>
       </div>

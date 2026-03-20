@@ -224,7 +224,7 @@
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    margin: 0.18rem 0 0.5rem 0;
+    margin: 0.18rem 0 0.05rem 0;
     flex-wrap: wrap;
     color: #000;
   }
@@ -257,6 +257,10 @@
     padding-top: 0.8rem;
   }
 
+  .publications-section--papers .publications-section-panel {
+    padding-top: 0.53rem;
+  }
+
   .publications-section-empty {
     margin: 0;
     color: var(--global-text-color-light);
@@ -266,6 +270,21 @@
     .row {
       margin-bottom: -1rem;
     }
+  }
+
+  .publications-project-list {
+    margin-top: 1.35rem;
+  }
+
+  .publications-project-item {
+    margin: 0;
+    color: var(--global-text-color);
+    font-size: 1.1rem;
+    line-height: 1.9;
+  }
+
+  .publications-project-item + .publications-project-item {
+    margin-top: 0.7rem;
   }
 
   .publications-video-grid {
@@ -287,8 +306,11 @@
   .publications-video-player {
     display: block;
     width: 100%;
+    height: 100%;
     aspect-ratio: 16 / 9;
     background: #000;
+    object-fit: cover;
+    object-position: center;
   }
 
   .publications-video-card-description {
@@ -305,7 +327,7 @@
 
     .publications-section-title,
     .publications-category-bar {
-      margin: 0.14rem 0 0.4rem 0;
+      margin: 0.14rem 0 0.05rem 0;
       gap: 0.3rem;
     }
 
@@ -321,6 +343,10 @@
     .publications-section-panel {
       border-top-width: 1px;
       padding-top: 0.65rem;
+    }
+
+    .publications-section--papers .publications-section-panel {
+      padding-top: 0.38rem;
     }
 
     .publications-video-grid {
@@ -429,7 +455,7 @@
   ol.bibliography li .pub-doi {
     margin-top: 0.12rem;
     margin-bottom: 0.1rem;
-    font-size: 1.00rem;
+    font-size: 1rem;
     color: var(--global-text-color-light);
     line-height: 1.35;
   }
@@ -537,6 +563,16 @@
     position: relative;
   }
 
+  .publication-entry--2026-first {
+    padding-top: 1.35rem;
+  }
+
+  .publication-entry--empty {
+    min-height: 3.8rem;
+    padding-top: 0.9rem;
+    padding-bottom: 0.7rem;
+  }
+
   .year-divider {
     border-top: 2px solid #000;
     margin: 0.15rem 0 0.65rem 0;
@@ -563,6 +599,12 @@
     object-fit: cover;
     border-radius: 0;
     box-shadow: none !important;
+  }
+
+  .publication-entry--2024 .publication-image img,
+  .publication-entry--2025 .publication-image img,
+  .publication-entry--2026 .publication-image img {
+    object-fit: fill;
   }
 
   .publication-body {
@@ -631,6 +673,13 @@
     pointer-events: none;
   }
 
+  .publication-empty-text {
+    color: var(--global-text-color-light);
+    font-size: 1rem;
+    line-height: 1.5;
+    padding-top: 0.1rem;
+  }
+
   @media (max-width: 768px) {
     .manual-publications {
       border-top-width: 1px;
@@ -656,6 +705,12 @@
       padding-top: 0.6rem;
     }
 
+    .publication-entry--empty {
+      min-height: 0;
+      padding-top: 0.6rem;
+      padding-bottom: 0.45rem;
+    }
+
     .year-divider {
       border-top-width: 1px;
       margin: 0.05rem 0 0.5rem 0;
@@ -667,6 +722,10 @@
       text-align: right;
       font-size: 1.4rem;
       font-weight: 400;
+    }
+
+    .publication-empty-text {
+      text-align: right;
     }
   }
 }

@@ -1,48 +1,18 @@
 {% assign member = include.member %}
 {% assign variant = include.variant | default: 'default' %}
 {% assign image_path = member.image | default: 'assets/img/TeleAi.jpg' %}
-{% assign team_data = page.team | default: site.data.team | default: empty %}
-{% assign team_defaults = team_data.defaults | default: empty %}
-{% assign has_links = false %}
-{% if member.links and member.links.size > 0 %}
-  {% assign has_links = true %}
-{% endif %}
-{% assign has_email = false %}
-{% if member.email %}
-  {% assign has_email = true %}
-{% endif %}
-{% assign default_email = team_defaults.email | default: "you@university.edu" %}
-{% assign default_homepage_url = "https://example.com" %}
-{% assign default_scholar_url = "https://scholar.google.com/" %}
-{% if team_defaults.links and team_defaults.links.size > 0 %}
-  {% for default_link in team_defaults.links %}
-    {% assign default_label = default_link.label | default: "" | strip | downcase %}
-    {% if default_link.url and default_label == "homepage" %}
-      {% assign default_homepage_url = default_link.url %}
-    {% elsif default_link.url and default_label == "google scholar" %}
-      {% assign default_scholar_url = default_link.url %}
-    {% elsif default_link.url and default_label == "github" and default_scholar_url == "https://scholar.google.com/" %}
-      {% assign default_scholar_url = default_link.url %}
-    {% endif %}
-  {% endfor %}
-{% endif %}
-{% assign member_homepage_url = "" %}
-{% assign member_scholar_url = "" %}
+{% assign member_homepage_url = '' %}
+{% assign member_scholar_url = '' %}
 {% if member.links and member.links.size > 0 %}
   {% for link in member.links %}
-    {% assign link_label = link.label | default: "" | strip | downcase %}
-    {% if link.url and link_label == "homepage" %}
+    {% assign link_label = link.label | default: '' | strip | downcase %}
+    {% if link.url and link_label == 'homepage' %}
       {% assign member_homepage_url = link.url %}
-    {% elsif link.url and link_label == "google scholar" %}
-      {% assign member_scholar_url = link.url %}
-    {% elsif link.url and link_label == "github" and member_scholar_url == "" %}
+    {% elsif link.url and link_label == 'google scholar' %}
       {% assign member_scholar_url = link.url %}
     {% endif %}
   {% endfor %}
 {% endif %}
-{% assign resolved_email = member.email | default: default_email %}
-{% assign resolved_homepage_url = member_homepage_url | default: default_homepage_url %}
-{% assign resolved_scholar_url = member_scholar_url | default: default_scholar_url %}
 
 {% assign image_sizes = '260px' %}
 {% if variant == 'lead' %}
@@ -77,51 +47,30 @@
       <div class="team-card-subtitle">{{ member.subtitle }}</div>
     {% endif %}
 
-    {% if variant == 'lead' and member.bio %}
+    {% if member.bio %}
       <div class="team-card-bio">
         {{ member.bio | markdownify }}
       </div>
     {% endif %}
 
-    {% if variant != 'lead' or member.email or has_links %}
-      <div class="team-card-links" aria-label="Member links">
-        {% if variant == 'lead' %}
-          <div class="team-card-meta">
-            {% if has_email %}
-              <div class="team-card-meta-row">
-                <span class="team-card-meta-label">Email:</span>
-                <a class="team-card-link team-card-link--text" href="mailto:{{ member.email | encode_email }}">
-                  {{- member.email | encode_email -}}
-                </a>
-              </div>
-            {% endif %}
-            {% if has_links %}
-              <div class="team-card-meta-row">
-                <span class="team-card-meta-label">Links:</span>
-                <div class="team-card-links-inline">
-                  {% for link in member.links %}
-                    {% if link.url and link.label %}
-                      <a class="team-card-link team-card-link--text" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">
-                        {{- link.label -}}
-                      </a>
-                    {% endif %}
-                  {% endfor %}
-                </div>
-              </div>
-            {% endif %}
-          </div>
+    <div class="team-card-links" aria-label="Member links">
+      <div class="team-card-links-inline">
+        {% if member_homepage_url != '' %}
+          <a class="team-card-link team-card-link--text" href="{{ member_homepage_url }}" target="_blank" rel="noopener noreferrer"> Homepage </a>
         {% else %}
-          <div class="team-card-links-inline">
-            <a class="team-card-link team-card-link--text" href="mailto:{{ resolved_email | encode_email }}">Email</a>
-            <a class="team-card-link team-card-link--text" href="{{ resolved_homepage_url }}" target="_blank" rel="noopener noreferrer">
-              Homepage
-            </a>
-            <a class="team-card-link team-card-link--text" href="{{ resolved_scholar_url }}" target="_blank" rel="noopener noreferrer">
-              Google Scholar
-            </a>
-          </div>
+          <span class="team-card-link team-card-link--disabled">Homepage</span>
+        {% endif %}
+
+        <span class="team-card-link-separator" aria-hidden="true">·</span>
+
+        {% if member_scholar_url != '' %}
+          <a class="team-card-link team-card-link--text" href="{{ member_scholar_url }}" target="_blank" rel="noopener noreferrer">
+            Google Scholar
+          </a>
+        {% else %}
+          <span class="team-card-link team-card-link--disabled">Google Scholar</span>
         {% endif %}
       </div>
-    {% endif %}
+    </div>
   </div>
 </div>

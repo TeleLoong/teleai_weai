@@ -1,7 +1,6 @@
 ---
 layout: default
 ---
-
 {% assign research = page.research | default: empty %}
 
 <div class="post">
@@ -24,7 +23,9 @@ layout: default
         <div class="research-quicklinks" aria-label="Quick links">
           {% for link in research.quicklinks %}
             {% if link.label and link.url %}
-              <a class="btn btn-sm btn-outline-primary" href="{{ link.url | relative_url }}">{{ link.label }}</a>
+              <a class="btn {{ link.style | default: 'btn-outline-primary' }}" href="{{ link.url | relative_url }}">
+                {{ link.label }}
+              </a>
             {% endif %}
           {% endfor %}
         </div>

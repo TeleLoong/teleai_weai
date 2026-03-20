@@ -27,19 +27,7 @@ home:
     intro: 我们聚焦空海跨域具身智能体与涉水光学/视觉，推动从仿真到真实的系统级闭环验证与部署。
     image: assets/img/Teampicture.jpg
     image_alt: Team photo
-  hero_actions:
-    - text: 研究方向
-      url: /research/
-      style: btn-primary
-    - text: 研究成果
-      url: /publications/
-      style: btn-outline-primary
-    - text: 相关报道
-      url: /reports/
-      style: btn-outline-primary
-    - text: 设备
-      url: /equipment/
-      style: btn-outline-primary
+  hero_actions: []
   research:
     title: 研究方向
     more_text: 查看详情
@@ -86,33 +74,90 @@ home:
         image: assets/img/6.jpg
         image_alt: 陈宇
         url: /team/
+      - name: 陈翼钒
+        role: 高级研究员
+        image: assets/team/chenyifan.jpg
+        image_alt: 陈翼钒
+        url: /team/
   equipment:
     title: 设备
     more_text: 查看全部
     more_url: /equipment/
     items:
-      - image: assets/img/4.jpg
-        image_alt: 实验平台设备 1
+      - image: assets/equipment/uv-lit-hydrodynamics-test-pool.jpg
+        image_alt: 紫外照明水动力测试池
         url: /equipment/
-      - image: assets/img/4.jpg
-        image_alt: 实验平台设备 2
+      - image: assets/equipment/yellow-water-robot-surface-test.jpg
+        image_alt: 黄色水下机器人近水面测试
         url: /equipment/
-      - image: assets/img/4.jpg
-        image_alt: 实验平台设备 3
+      - image: assets/equipment/white-water-robot-remote-control-test.jpg
+        image_alt: 白色水面机器人遥控测试
+        url: /equipment/
+      - image: assets/equipment/orange-water-robot-underwater-obstacle-course.jpg
+        image_alt: 橙色水下机器人障碍通道测试
         url: /equipment/
   overview:
     title: 项目总览图
     image: assets/img/TeleAI-涉水具身智能团队.png
     image_alt: 项目总览图
+    rov:
+      video: /assets/mp4/海缆作业.mp4
+      poster: /assets/img/home-overview-posters/rov.jpg
+      aria_label: 深海ROV海缆作业视频
+    cable_inspection:
+      aria_label: 海缆巡检原始图像与复原增强图像分屏视频
+      top:
+        video: /assets/mp4/海缆巡检原始图像.mp4
+        poster: /assets/img/home-overview-posters/cable-inspection-top.jpg
+        aria_label: 海缆巡检原始图像视频
+      bottom:
+        video: /assets/mp4/复原增强图像.mp4
+        poster: /assets/img/home-overview-posters/cable-inspection-bottom.jpg
+        aria_label: 复原增强图像视频
+    wetplug:
+      aria_label: 深海湿插拔线缆目标检测跟踪分屏视频
+      top:
+        video: /assets/mp4/深海湿插拔线缆目标检测跟踪1.mp4
+        poster: /assets/img/home-overview-posters/wetplug-top.jpg
+        aria_label: 深海湿插拔线缆目标检测跟踪视频1
+      bottom:
+        video: /assets/mp4/深海湿插拔线缆目标检测跟踪2.mp4
+        poster: /assets/img/home-overview-posters/wetplug-bottom.jpg
+        aria_label: 深海湿插拔线缆目标检测跟踪视频2
+    auv_guide:
+      aria_label: AUV水下回收光学导引分屏视频
+      top:
+        video: /assets/mp4/光学导引.mp4
+        poster: /assets/img/home-overview-posters/auv-guide-top.jpg
+        aria_label: 光学导引视频
+        preload: auto
+      bottom:
+        video: /assets/mp4/AUV水下回收光学导引.mp4
+        poster: /assets/img/home-overview-posters/auv-guide-bottom.jpg
+        aria_label: AUV水下回收光学导引视频2
+    uav:
+      bottom_left:
+        video: /assets/mp4/无人机起飞图1.mp4
+        poster: /assets/img/home-overview-posters/uav-bottom-left.jpg
+        aria_label: 无人机起飞视频1
+      bottom_mid:
+        video: /assets/mp4/无人机起飞图2.mp4
+        poster: /assets/img/home-overview-posters/uav-bottom-mid.jpg
+        aria_label: 无人机起飞视频2
+      bottom_right:
+        video: /assets/mp4/无人机起飞图3.mp4
+        poster: /assets/img/home-overview-posters/uav-bottom-right.jpg
+        aria_label: 无人机起飞视频3
   cta:
     title: 加入我们
     text: 欢迎对涉水具身智能与视觉感知感兴趣的同学加入团队，一起把研究做进真实场景。
     actions:
-      - text: 查看招聘
+      - text: 加入我们
         url: /jobs/
         style: btn-primary
-      - text: 联系我们
+      - text: 联系方式
         url: /contact/
-        style: btn-outline-primary
+        style: btn-primary
 ---
+
 <!-- 主页内容由 `_layouts/home.liquid` 渲染；需要改文案/按钮/图片请编辑本文件的 `home` 配置。 -->

@@ -1,8 +1,7 @@
 ---
 layout: page
 ---
-
-{% assign jobs = page.jobs | default: site.data.jobs | default: empty %}
+{% assign jobs = page.jobs | default: empty %}
 {% assign hero = jobs.hero | default: empty %}
 {% assign apply = jobs.apply | default: empty %}
 {% assign roles = jobs.roles | default: empty %}
@@ -10,12 +9,15 @@ layout: page
 {% if roles.size > 0 %}
   {% assign has_roles = true %}
 {% endif %}
-{% assign hero_title = hero.title | default: "加入我们" %}
-{% assign hero_description = hero.description | default: page.description | default: "欢迎加入我们，围绕空海跨域具身智能体与涉水光学/视觉开展研究与工程实践。" %}
-{% assign section_title = jobs.section_title | default: "岗位介绍" %}
-{% assign empty_text = jobs.empty_text | default: "暂无开放岗位，欢迎通过邮件联系。" %}
-{% assign apply_title = jobs.apply_title | default: "申请方式" %}
-{% assign apply_note = apply.note | default: "扫码或点击 Boss 直聘投递。" %}
+{% assign hero_title = hero.title | default: '加入我们' %}
+{% assign hero_description = hero.description
+  | default: page.description
+  | default: '欢迎加入我们，围绕空海跨域具身智能体与涉水光学/视觉开展研究与工程实践。'
+%}
+{% assign section_title = jobs.section_title | default: '岗位介绍' %}
+{% assign empty_text = jobs.empty_text | default: '暂无开放岗位，欢迎通过邮件联系。' %}
+{% assign apply_title = jobs.apply_title | default: '申请方式' %}
+{% assign apply_note = apply.note | default: '扫码或点击 Boss 直聘投递。' %}
 
 <div class="jobs-page">
   <section class="jobs-hero">
@@ -36,10 +38,15 @@ layout: page
 
           {% if has_roles %}
             {% for role in roles %}
-              <details class="jobs-role-card" {% if role.open == true or role.id == 'intern' or role.id == 'phd' %}open{% endif %}>
+              <details
+                class="jobs-role-card"
+                {% if role.open == true or role.id == 'intern' or role.id == 'phd' %}
+                  open
+                {% endif %}
+              >
                 <summary class="jobs-role-summary">
                   <div class="jobs-role-heading">
-                    <span class="jobs-role-title">{{ role.title | default: "岗位" }}</span>
+                    <span class="jobs-role-title">{{ role.title | default: '岗位' }}</span>
                   </div>
                 </summary>
 
@@ -78,11 +85,11 @@ layout: page
             <div class="jobs-apply-boss">
               {% if apply and apply.boss and apply.boss.url %}
                 <a class="jobs-btn jobs-btn--block jobs-btn--primary" href="{{ apply.boss.url }}" target="_blank" rel="noopener noreferrer">
-                  {{ apply.boss.label | default: "Boss 直聘" }}
+                  {{ apply.boss.label | default: 'Boss 直聘' }}
                 </a>
                 <p class="jobs-apply-note">{{ apply_note }}</p>
               {% elsif apply and apply.boss %}
-                <div class="jobs-boss-placeholder">{{ apply.boss.label | default: "Boss 直聘" }}链接待更新</div>
+                <div class="jobs-boss-placeholder">{{ apply.boss.label | default: 'Boss 直聘' }}链接待更新</div>
               {% endif %}
             </div>
           </aside>

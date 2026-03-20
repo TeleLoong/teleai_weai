@@ -693,6 +693,7 @@
     const modalImage = newsModal.querySelector("[data-report-news-modal-image]");
     const modalTitle = newsModal.querySelector("[data-report-news-modal-title]");
     const modalDate = newsModal.querySelector("[data-report-news-modal-date]");
+    const modalSummary = newsModal.querySelector("[data-report-news-modal-summary]");
     const modalLink = newsModal.querySelector("[data-report-news-modal-link]");
     const modalClosers = Array.from(newsModal.querySelectorAll("[data-report-news-close]"));
     let lastTrigger = null;
@@ -712,6 +713,7 @@
     const openModal = (toggle) => {
       const title = toggle.dataset.reportNewsTitle || "";
       const date = toggle.dataset.reportNewsDate || "";
+      const summary = toggle.dataset.reportNewsSummary || "";
       const image = toggle.dataset.reportNewsImage || "";
       const link = toggle.dataset.reportNewsLink || "";
 
@@ -724,6 +726,11 @@
         const hasDate = date && date !== "未标注日期";
         modalDate.textContent = hasDate ? date : "";
         modalDate.hidden = !hasDate;
+      }
+      if (modalSummary) {
+        const hasSummary = Boolean(summary);
+        modalSummary.textContent = hasSummary ? summary : "";
+        modalSummary.hidden = !hasSummary;
       }
       if (modalLink) {
         modalLink.href = link;

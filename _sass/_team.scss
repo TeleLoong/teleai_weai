@@ -25,6 +25,70 @@
     min-width: 0;
   }
 
+  .team-group--teachers .team-grid-fixed-three {
+    justify-items: center;
+  }
+
+  .team-group--teachers .team-grid-fixed-three__item {
+    display: flex;
+    justify-content: center;
+  }
+
+  .team-group--teachers .team-card {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .team-group--teachers .team-card-name {
+    font-size: 1.1em;
+  }
+
+  .team-group--teachers .team-card-role {
+    font-size: 1.1em;
+  }
+
+  .team-group--teachers .team-card-subtitle {
+    font-size: 1.045rem;
+  }
+
+  .team-group--teachers .team-card-bio {
+    font-size: 1.045rem;
+    line-height: 1.7;
+  }
+
+  .team-group--teachers .team-card-body {
+    width: 280px;
+    margin: 0 auto;
+  }
+
+  .team-group--teachers .team-card-links {
+    margin-top: 0.45rem;
+  }
+
+  .team-group--teachers .team-card-image {
+    width: 280px;
+    height: 395px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .team-group--teachers .team-card-image figure,
+  .team-group--teachers .team-card-image picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+
+  .team-group--teachers .team-card-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    object-fit: cover;
+    object-position: center top;
+  }
+
   .team-card--placeholder {
     border: 1px dashed var(--global-divider-color);
     border-radius: 0.2rem;
@@ -113,7 +177,7 @@
 }
 
 .team-card-name--lead {
-  font-size: 1.7rem;
+  font-size: 2.55rem;
   margin: 0;
 }
 
@@ -131,6 +195,10 @@
 
 .team-card-bio {
   margin-top: 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  text-align: left;
+  font-family: "SimHei", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
 
   p:last-child {
     margin-bottom: 0;
@@ -145,13 +213,15 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0;
+  align-items: baseline;
   justify-content: center;
 }
 
-.team-card-links-inline a + a::before {
-  content: " · ";
+.team-card-link-separator {
   color: var(--global-text-color-light);
   padding: 0 0.4rem;
+  text-decoration: none;
+  user-select: none;
 }
 
 .team-card-link--text {
@@ -165,6 +235,14 @@
     text-underline-offset: 3px;
     text-decoration-thickness: 1px;
   }
+}
+
+.team-card-link--disabled {
+  font-size: 0.95rem;
+  color: var(--global-text-color-light);
+  cursor: default;
+  text-decoration: none;
+  pointer-events: none;
 }
 
 .team-card--lead {
@@ -182,6 +260,35 @@
 
 .team-card--lead .team-card-body {
   padding: 2.8rem 0 0;
+}
+
+.team-card--lead .team-card-role {
+  font-size: 1.5rem;
+}
+
+.team-card--lead .team-card-subtitle {
+  font-size: 1.425rem;
+}
+
+.team-card--lead .team-card-bio {
+  font-size: 1.425rem;
+  line-height: 1.6;
+  max-width: 60ch;
+}
+
+.team-card--lead .team-card-links-inline {
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+}
+
+.team-card--lead .team-card-links-inline .team-card-link--text,
+.team-card--lead .team-card-links-inline .team-card-link--disabled {
+  font-size: 1.5rem;
+}
+
+.team-card--lead .team-card-link-separator {
+  font-size: 1.5rem;
+  padding: 0 0.5rem;
 }
 
 .team-card-meta {
@@ -247,6 +354,35 @@
     height: clamp(86px, 21vw, 126px);
   }
 
+  .team-page .team-group--teachers .team-card {
+    max-width: clamp(110px, 26vw, 160px);
+  }
+
+  .team-page .team-group--teachers .team-card-image {
+    width: clamp(110px, 26vw, 160px);
+    height: clamp(155px, 36.7vw, 226px);
+  }
+
+  .team-page .team-group--teachers .team-card-body {
+    width: clamp(110px, 26vw, 160px);
+  }
+
+  .team-page .team-group--teachers .team-card-image figure,
+  .team-page .team-group--teachers .team-card-image picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+
+  .team-page .team-group--teachers .team-card-img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    object-fit: cover;
+    object-position: center top;
+  }
+
   .team-page .team-group--fixed-three .team-card-name {
     font-size: 0.88rem;
     line-height: 1.15;
@@ -272,5 +408,37 @@
 
   .team-card--lead .team-card-body {
     padding: 0;
+  }
+
+  .team-card-name--lead {
+    font-size: 2rem;
+  }
+
+  .team-card--lead .team-card-role {
+    font-size: 1.15rem;
+  }
+
+  .team-card--lead .team-card-subtitle {
+    font-size: 1.05rem;
+  }
+
+  .team-card--lead .team-card-bio {
+    font-size: 1rem;
+    line-height: 1.65;
+    max-width: none;
+  }
+
+  .team-card--lead .team-card-links-inline {
+    flex-wrap: wrap;
+  }
+
+  .team-card--lead .team-card-links-inline .team-card-link--text,
+  .team-card--lead .team-card-links-inline .team-card-link--disabled {
+    font-size: 1.05rem;
+  }
+
+  .team-card--lead .team-card-link-separator {
+    font-size: 1.05rem;
+    padding: 0 0.35rem;
   }
 }

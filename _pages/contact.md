@@ -7,12 +7,20 @@ nav_order: 7
 description: 联系信息与加入方式。
 hide_page_header: true
 main_container_class: "container mt-3"
+_styles: |
+  .post article > ul:first-of-type {
+    font-size: 1.2rem;
+  }
+
+  .post article > ul:first-of-type code {
+    font-size: 1em;
+  }
 ---
 
 ## 联系方式
 
-- 邮箱：`your-lab@university.edu`
-- 地址：`Department, University, City, State, ZIP`
+- 邮箱：`sunzhe@nwpu.edu.cn`
+- 地址：`上海市徐汇区龙文路199号国际传媒港F1座30层`
 
 ## 招生与合作
 
