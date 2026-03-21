@@ -2,7 +2,6 @@
 layout: publications
 permalink: /publications/
 title: 研究成果
-description: 论文、项目与学术成果，按时间倒序展示。
 nav: true
 nav_order: 4
 
@@ -13,20 +12,15 @@ nav_order: 4
 # - Optional long-form markdown content can be written after front matter.
 
 publications:
-  intro: >
-    聚焦涉水具身智能、机器人系统与视觉感知方向的代表性成果，覆盖系统 demo、
-    关键项目与按年份整理的论文/专利列表。
   videos:
     title: 视频展示
     aria_label: 研究成果视频展示
     items:
       - title: 空海跨域具身智能体系统演示
-        description: 该视频展示了团队在空海跨域具身智能方向的系统演示，体现了平台在复杂环境感知、跨域协同与自主作业方面的能力。
         mp4: /assets/publication/空海跨域具身智能体-0309-小-web.mp4
         poster: /assets/publication/空海跨域具身智能体系统演示cover.jpg
         preload: metadata
       - title: 深海相机与机械臂协同实验 demo
-        description: 该视频展示了深海相机与机械臂协同作业的实验 demo，呈现了水下视觉感知、目标交互与精细操作的整体流程。
         mp4: /assets/publication/深海相机+机械臂demo20260211-web.mp4
         poster: /assets/publication/深海相机+机械臂demo20260211-poster.jpg
         preload: metadata
@@ -34,26 +28,7 @@ publications:
     title: 项目
     empty_text: 暂无项目内容。
     items:
-      - >-
-        2022.12 - 2025.11 国家重点研发计划“深海和极地关键技术与装备”专项课题，水下XXXX算法及试验验证，
-        2022YFC2808003。开发的“领航者”深海光学智能导引系统入选2023年西安硬科技重大突破。
-      - >-
-        2024.09 - 2026.09 水下信息与控制全国重点实验室基金项目，尾流气泡高频高稳定激光探测与信号处理，
-        2024-CXPT-GF-JJ-036-09。
-      - >-
-        2024.01 - 2025.12 陕西省自然科学基础研究计划面上项目，水下视觉导引灯位姿解算方法，
-        2024JC-YBMS-468。
-      - >-
-        2025.08 - 2027.07 鹭江创新实验室自主部署科技项目，水下精细作业的视觉增强与跟踪定位一体化技术研究。
-      - >-
-        2025.08 - 2026.07 中国电信股份有限公司人工智能研究院（上海），基于水下机器人平台的硬件设计与集成开发服务项目。
-      - >-
-        2022.08 - 2024.07 中央高校基本科研业务费专项资金项目课题，基于贝塞尔互相关光场的水下智能单像素成像探测技术研究，
-        D500220481。
-      - >-
-        2020.02 - 2022.01 DEUTSCHE FORSCHUNGSGEMEINSCHAFT (DFG, GERMAN RESEARCH FOUNDATION)
-        UNDER GERMANY'S EXCELLENCE STRATEGY - EXC 2051 - PROJECT-ID 390713860, "BALANCE OF THE MICROVERSE",
-        GRANT NO. 073010-105。
+      - 承担国家重点研发计划等国家级、省部级科研与工程项目
   records:
     category_labels:
       - 论文
@@ -252,7 +227,6 @@ publications:
         venue: Optics Express 32 (8), 13224-13234
         doi: 10.1364/OE.510683
         doi_link: false
-        image: assets/img/publication_preview/2024-multi-input-mutual-supervision-network.jpg
         year: 2024
       - title: Underwater Single-pixel Imaging Method Based on Object Search and Detail Enhancement
         authors: Y Chen, Z Sun, X Li

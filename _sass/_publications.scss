@@ -212,7 +212,7 @@
 
 .publications-page {
   article {
-    margin-top: 0.25rem;
+    margin-top: 1rem;
   }
 
   .publications-section + .publications-section {
@@ -321,6 +321,10 @@
   }
 
   @media (max-width: 768px) {
+    article {
+      margin-top: 0.75rem;
+    }
+
     .publications-section + .publications-section {
       margin-top: 2rem;
     }

@@ -38,8 +38,8 @@
 .home-top-banner {
   width: 100%;
   height: var(--home-top-banner-height, 220px);
-  background-image: linear-gradient(var(--home-top-banner-overlay, rgba(0, 0, 0, 0.0)), var(--home-top-banner-overlay, rgba(0, 0, 0, 0.0))),
-    var(--home-top-banner-image);
+  background-image:
+    linear-gradient(var(--home-top-banner-overlay, rgba(0, 0, 0, 0)), var(--home-top-banner-overlay, rgba(0, 0, 0, 0))), var(--home-top-banner-image);
   background-size: var(--home-top-banner-size, cover);
   background-position: var(--home-top-banner-position, center);
   background-repeat: no-repeat;
@@ -48,7 +48,8 @@
 
 .home-hero {
   padding: 4.25rem 0 3.25rem;
-  background: radial-gradient(1200px 380px at 10% 0%, rgba(15, 76, 129, 0.16), transparent 55%),
+  background:
+    radial-gradient(1200px 380px at 10% 0%, rgba(15, 76, 129, 0.16), transparent 55%),
     radial-gradient(980px 420px at 95% 10%, rgba(236, 200, 118, 0.14), transparent 60%);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 
@@ -99,7 +100,9 @@
     border-radius: 14px;
     overflow: hidden;
     height: 100%;
-    transition: transform 160ms ease, box-shadow 160ms ease;
+    transition:
+      transform 160ms ease,
+      box-shadow 160ms ease;
   }
 
   .home-team-card:hover {

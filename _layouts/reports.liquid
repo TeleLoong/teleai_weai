@@ -13,7 +13,10 @@ layout: default
   {% unless page.hide_page_header %}
     <header class="post-header">
       <h1 class="post-title">{{ page.title }}</h1>
-      <p class="post-description">{{ page.description }}</p>
+      {% assign page_description = page.description | to_s | strip %}
+      {% if page_description != '' %}
+        <p class="post-description">{{ page_description }}</p>
+      {% endif %}
     </header>
   {% endunless %}
 
@@ -34,9 +37,10 @@ layout: default
       <section class="reports-section reports-section--videos" aria-labelledby="reports-videos-title">
         <div class="reports-section-heading">
           <h2 class="reports-section-title" id="reports-videos-title">{{ videos_section.title | default: '视频报道' }}</h2>
-          <p class="reports-section-description">
-            {{ videos_section.description | default: '按时间倒序展示团队公开播出的电视报道、采访和纪录片内容。' }}
-          </p>
+          {% assign videos_description = videos_section.description | to_s | strip %}
+          {% if videos_description != '' %}
+            <p class="reports-section-description">{{ videos_description }}</p>
+          {% endif %}
         </div>
 
         {% if report_videos and report_videos.size > 0 %}
@@ -177,9 +181,10 @@ layout: default
       <section class="reports-section reports-section--news" aria-labelledby="reports-news-title">
         <div class="reports-section-heading">
           <h2 class="reports-section-title" id="reports-news-title">{{ news_section.title | default: '新闻报道' }}</h2>
-          <p class="reports-section-description">
-            {{ news_section.description | default: '媒体转发与新闻图文统一收纳在这里，默认摘要展示，点击卡片可全屏查看完整内容。' }}
-          </p>
+          {% assign news_description = news_section.description | to_s | strip %}
+          {% if news_description != '' %}
+            <p class="reports-section-description">{{ news_description }}</p>
+          {% endif %}
         </div>
 
         {% if report_news and report_news.size > 0 %}
@@ -266,7 +271,6 @@ layout: default
               <img class="reports-news-modal__image" data-report-news-modal-image src="" alt="">
             </div>
             <div class="reports-news-modal__body">
-              <span class="report-tag report-tag--news">新闻报道</span>
               <h3 class="reports-news-modal__title" id="report-news-modal-title" data-report-news-modal-title></h3>
               <p class="reports-news-modal__date" data-report-news-modal-date hidden></p>
               <p class="reports-news-modal__summary" data-report-news-modal-summary hidden></p>

@@ -119,9 +119,7 @@
   };
 
   const getFailureMessage = (playerState) =>
-    Number.isFinite(playerState.pendingSeekTime)
-      ? "视频跳转失败，请再次点击播放或刷新后重试。"
-      : "视频加载失败，请再次点击播放或刷新后重试。";
+    Number.isFinite(playerState.pendingSeekTime) ? "视频跳转失败，请再次点击播放或刷新后重试。" : "视频加载失败，请再次点击播放或刷新后重试。";
 
   const armLoadTimeout = (playerState, message) => {
     clearLoadTimeout(playerState);
@@ -223,9 +221,7 @@
     }
 
     playerState.autoRecoveryCount += 1;
-    playerState.recoveryResumeTime = Number.isFinite(playerState.pendingSeekTime)
-      ? playerState.pendingSeekTime
-      : getCurrentTime(playerState);
+    playerState.recoveryResumeTime = Number.isFinite(playerState.pendingSeekTime) ? playerState.pendingSeekTime : getCurrentTime(playerState);
     playerState.mode = Number.isFinite(playerState.pendingSeekTime) ? MODE.SEEKING : MODE.LOADING;
     updateToggle(playerState);
     showStatus(playerState, "视频启动较慢，正在自动恢复...");
@@ -316,10 +312,7 @@
       armLoadTimeout(playerState, getFailureMessage(playerState));
     }
 
-    armProgressWatchdog(
-      playerState,
-      Number.isFinite(playerState.pendingSeekTime) ? playerState.pendingSeekTime : getCurrentTime(playerState)
-    );
+    armProgressWatchdog(playerState, Number.isFinite(playerState.pendingSeekTime) ? playerState.pendingSeekTime : getCurrentTime(playerState));
 
     if (video.networkState === HTMLMediaElement.NETWORK_EMPTY) {
       video.load();
@@ -634,15 +627,9 @@
 
       playerState.mode = Number.isFinite(playerState.pendingSeekTime) ? MODE.SEEKING : MODE.LOADING;
       updateToggle(playerState);
-      showStatus(
-        playerState,
-        Number.isFinite(playerState.pendingSeekTime) ? "正在跳转到目标位置..." : "正在缓冲视频..."
-      );
+      showStatus(playerState, Number.isFinite(playerState.pendingSeekTime) ? "正在跳转到目标位置..." : "正在缓冲视频...");
       armLoadTimeout(playerState, getFailureMessage(playerState));
-      armProgressWatchdog(
-        playerState,
-        Number.isFinite(playerState.pendingSeekTime) ? playerState.pendingSeekTime : getCurrentTime(playerState)
-      );
+      armProgressWatchdog(playerState, Number.isFinite(playerState.pendingSeekTime) ? playerState.pendingSeekTime : getCurrentTime(playerState));
     });
 
     ["stalled", "suspend"].forEach((eventName) => {
@@ -652,10 +639,7 @@
         updateToggle(playerState);
         showStatus(playerState, "网络波动，正在尝试恢复播放...");
         armLoadTimeout(playerState, getFailureMessage(playerState));
-        armProgressWatchdog(
-          playerState,
-          Number.isFinite(playerState.pendingSeekTime) ? playerState.pendingSeekTime : getCurrentTime(playerState)
-        );
+        armProgressWatchdog(playerState, Number.isFinite(playerState.pendingSeekTime) ? playerState.pendingSeekTime : getCurrentTime(playerState));
       });
     });
 

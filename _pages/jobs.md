@@ -12,13 +12,14 @@ jobs:
     title: 加入我们
     description: 欢迎加入我们，围绕空海跨域具身智能体与涉水光学/视觉开展研究与工程实践。
   section_title: 岗位介绍
+  section_intro: 涉水具身智能团队隶属于中国电信人工智能研究院（TeleAI），提供全职、科研实习生岗位，招收企业联培博士研究生（推免）、硕士/博士
   apply_title: 申请方式
   empty_text: 暂无开放岗位，欢迎通过邮件联系。
   apply:
     note: 扫码或点击 Boss 直聘投递。
     boss:
       label: Boss 直聘
-      url: ""
+      url: "https://www.zhipin.com/gongsi/job/fab0d9bb1adb44d51HJ93N28GVI~.html?ka=company-jobs"
     qr:
       image: assets/img/jobs-qr.png
       alt: 扫码投递（Boss 直聘）
@@ -53,5 +54,5 @@ jobs:
         - 机器人系统
       summary: 欢迎硕士/博士研究生通过联合培养方式参与课题研究与系统研发。
       jd: |
-        有意向的同学请通过联系方式中的邮箱联系孙老师
+        欢迎优秀的同学发邮件联系： sunzhe@nwpu.edu.cn
 ---

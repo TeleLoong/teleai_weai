@@ -1,7 +1,12 @@
 @use "variables" as v;
 
+.equipment-page h2 {
+  margin-bottom: 0.85rem;
+}
+
 .equipment-gallery {
   row-gap: 1rem;
+  margin-bottom: 2.5rem;
 }
 
 .equipment-gallery-item {

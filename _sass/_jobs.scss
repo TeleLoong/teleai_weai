@@ -97,7 +97,11 @@
   font-size: 0.93rem;
   font-weight: 650;
   text-decoration: none;
-  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease;
 }
 
 .jobs-btn--primary {
@@ -158,7 +162,10 @@
   margin-bottom: 0.95rem;
   overflow: hidden;
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.06);
-  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
 .jobs-role-card:hover {

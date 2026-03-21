@@ -15,6 +15,7 @@ layout: page
   | default: '欢迎加入我们，围绕空海跨域具身智能体与涉水光学/视觉开展研究与工程实践。'
 %}
 {% assign section_title = jobs.section_title | default: '岗位介绍' %}
+{% assign section_intro = jobs.section_intro | default: empty %}
 {% assign empty_text = jobs.empty_text | default: '暂无开放岗位，欢迎通过邮件联系。' %}
 {% assign apply_title = jobs.apply_title | default: '申请方式' %}
 {% assign apply_note = apply.note | default: '扫码或点击 Boss 直聘投递。' %}
@@ -35,6 +36,9 @@ layout: page
       <div class="row">
         <div class="col-lg-8 jobs-main-left">
           <h2 class="jobs-section-title" id="jobs-jd">{{ section_title }}</h2>
+          {% if section_intro != blank %}
+            <p class="jobs-section-intro">{{ section_intro }}</p>
+          {% endif %}
 
           {% if has_roles %}
             {% for role in roles %}

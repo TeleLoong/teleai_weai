@@ -2,7 +2,6 @@
 layout: reports
 permalink: /reports/
 title: 相关报道
-description: 实验室相关新闻、活动报道与技术成果传播。
 nav: true
 nav_order: 5
 
@@ -12,13 +11,9 @@ nav_order: 5
 # - Optional long-form markdown content can be written after front matter.
 
 reports:
-  intro: >
-    我们持续记录团队在真实涉水场景中的研究进展、对外交流与项目动态，
-    将公开视频报道与新闻图文统一整理在这里，便于集中浏览与后续维护。
   show_download_link: true
   videos:
     title: 视频报道
-    description: 按页面配置顺序展示团队公开播出的电视报道、采访和纪录片内容。
     aria_label: 视频报道时间轴
     empty_text: 暂无视频报道，后续将在这里持续更新。
     items:
@@ -69,53 +64,41 @@ reports:
         playback: "/assets/reports/20230718-西工大科研团队为水下无人潜航器成像戴上“AI眼镜” -- 起点新闻客户端.mp4"
   news:
     title: 新闻报道
-    description: 媒体转发与新闻图文统一收纳在这里，默认摘要展示，点击卡片可全屏查看完整内容。
     aria_label: 新闻报道卡片列表
     empty_text: 暂无新闻报道，后续将在这里持续更新。
     items:
       - title: 陕西日报网页
         date: "2023-10-06"
-        summary: 报道展示了团队深海智能光学导引装置及系统完成海试验证的相关内容。
         image: /assets/reports/陕西日报网页-20231006.png
       - title: 科学网转发
         date: "2023-09-28"
-        summary: 媒体转载了团队深海智能光学导引装置及系统海试验证的相关新闻。
         image: /assets/reports/科学网转发-20230928.png
       - title: 陕西网发布
         date: "2023-09-28"
-        summary: 平台发布了团队相关成果报道页面截图。
         image: /assets/reports/陕西网发布-20230928.png
       - title: 中国新闻网转发
         date: "2023-09-27"
-        summary: 新闻截图记录了媒体对团队海试成果的转载报道。
         image: /assets/reports/中国新闻网转发-20230927.png
       - title: 人民日报报道
         date: "2023-09-27"
-        summary: 报道聚焦团队深海智能光学导引装置及系统的突破进展。
         image: /assets/reports/人民日报报道-20230927.png
       - title: 东方卫视转发
         date: "2023-09-26"
-        summary: 电视媒体对“领航者”无人潜航器相关海试成果进行了转发。
         image: /assets/reports/东方卫视转发-20230926.png
       - title: 中国日报转发
         date: "2023-09-26"
-        summary: 海内外受众可在相关截图中查看团队成果报道版面。
         image: /assets/reports/中国日报转发-20230926.png
       - title: 西工大发布
         date: "2023-09-26"
-        summary: 学校官方渠道发布了团队深海智能光学导引装置及系统海试成功的消息。
         image: /assets/reports/西工大发布-20230926.png
       - title: 华商报报道
         date: "2023-09-25"
-        summary: 报纸版面报道了团队科研成果与海试验证进展。
         image: /assets/reports/华商报报道-20230925.png
       - title: 西部网转发
         date: "2023-09-25"
-        summary: 平台转载了团队相关成果新闻页面截图。
         image: /assets/reports/西部网转发-20230925.png
       - title: 陕西省科学技术厅转发
         date: "2023-09-21"
-        summary: 主管部门平台转发了团队海试验证相关新闻。
         image: /assets/reports/陕西省科学技术厅转发-20230921.png
 ---
 

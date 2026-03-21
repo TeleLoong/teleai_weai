@@ -509,8 +509,8 @@
 .reports-news-modal__body {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
-  padding: 4.5rem 1.5rem 1.5rem;
+  gap: 0.55rem;
+  padding: 2.2rem 1.5rem 1.5rem;
   overflow-y: auto;
   background: color-mix(in srgb, var(--global-card-bg-color) 97%, var(--global-bg-color));
 }

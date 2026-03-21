@@ -1,16 +1,29 @@
 @use "variables" as v;
 
+.post:has(.research-page) {
+  .post-header {
+    .post-description {
+      margin-bottom: 0.6rem;
+      font-size: 1.474rem;
+      line-height: 1.55;
+      color: var(--global-text-color);
+      font-family: "SimHei", "Microsoft YaHei", "PingFang SC", "Heiti SC", sans-serif;
+    }
+  }
+}
+
 .research-page {
-  margin-top: 0.5rem;
+  margin-top: 0.1rem;
   font-size: 1.08rem;
 }
 
 .research-intro {
   max-width: 60rem;
-  margin: 0 0 1.4rem;
-  font-size: 1.12rem;
-  line-height: 1.75;
+  margin: 0 0 1.25rem;
+  font-size: 1.206rem;
+  line-height: 1.55;
   color: var(--global-text-color);
+  font-family: inherit;
 }
 
 .research-quicklinks {
@@ -97,21 +110,39 @@
 
 .research-image {
   width: 100%;
-  height: 240px;
+  height: 300px;
   object-fit: cover;
+  object-position: center;
   border-radius: 12px;
   margin-top: 0.9rem;
   border: 1px solid var(--global-divider-color);
+  background: var(--global-card-bg-color);
+}
+
+.research-image--contain {
+  object-fit: contain;
 }
 
 @media (max-width: 576px) {
+  .post:has(.research-page) {
+    .post-header {
+      .post-description {
+        margin-bottom: 0.5rem;
+        font-size: 1.232rem;
+        line-height: 1.5;
+      }
+    }
+  }
+
   .research-page {
     font-size: 1rem;
+    margin-top: 0.05rem;
   }
 
   .research-intro {
-    font-size: 1rem;
-    margin-bottom: 1.1rem;
+    font-size: 1.008rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
   }
 
   .research-card {
@@ -124,6 +155,6 @@
   }
 
   .research-image {
-    height: 190px;
+    height: 230px;
   }
 }

@@ -57,8 +57,9 @@ layout: default
                 {% endif %}
 
                 {% if card.image %}
+                  {% assign image_fit = card.image_fit | default: 'cover' %}
                   <img
-                    class="research-image"
+                    class="research-image research-image--{{ image_fit }}"
                     src="{{ card.image | relative_url }}"
                     alt="{{ card.image_alt | default: card.title | default: 'Research image' }}"
                   >
