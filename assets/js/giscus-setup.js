@@ -9,7 +9,7 @@ function determineGiscusTheme() {
 
   let giscusAttributes = {
     src: "https://giscus.app/client.js",
-    "data-repo": "Ajianplus/teleai",
+    "data-repo": "TeleLoong/teleai",
     "data-repo-id": "",
     "data-category": "Comments",
     "data-category-id": "",

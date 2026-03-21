@@ -18,28 +18,28 @@ ninja.data = [{
           },
         },{id: "nav-研究方向",
           title: "研究方向",
-          description: "面向空海跨域具身智能体与涉水光学/视觉的研究。",
+          description: "涉水光学&amp;具身智能，让机器人看得清、学得会、动得稳",
           section: "Navigation",
           handler: () => {
             window.location.href = "/teleai/research/";
           },
         },{id: "nav-研究成果",
           title: "研究成果",
-          description: "论文、项目与学术成果，按时间倒序展示。",
+          description: "",
           section: "Navigation",
           handler: () => {
             window.location.href = "/teleai/publications/";
           },
         },{id: "nav-相关报道",
           title: "相关报道",
-          description: "实验室相关新闻、活动报道与技术成果传播。",
+          description: "",
           section: "Navigation",
           handler: () => {
             window.location.href = "/teleai/reports/";
           },
         },{id: "nav-设备",
           title: "设备",
-          description: "实验室照片与工作环境照片。",
+          description: "",
           section: "Navigation",
           handler: () => {
             window.location.href = "/teleai/equipment/";
