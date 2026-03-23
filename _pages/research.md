@@ -18,7 +18,7 @@ research:
       style: btn-primary
   cards:
     - title: 空海跨域具身智能体
-      description: 面向空中/海面/水下等涉水环境，实现感知、规划、控制一体化的具身智能系统
+      description: 面向空中/海面/水下等涉水环境，研究感知、规划、控制一体化的具身智能
       bullets:
         - 跨域任务建模与策略学习（仿真到真实）
         - 多模态感知与鲁棒自主决策

@@ -263,6 +263,14 @@ details[open] > .jobs-role-summary::after {
   color: var(--global-text-color);
 }
 
+.jobs-apply-subtitle {
+  margin: -0.25rem 0 0.85rem;
+  font-size: 1.045rem;
+  line-height: 1.55;
+  color: var(--global-text-color);
+  font-family: "SimHei", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+}
+
 .jobs-apply-item {
   margin: 0 0 0.7rem;
 }
@@ -306,8 +314,9 @@ details[open] > .jobs-role-summary::after {
 
 .jobs-apply-note {
   margin: 0.55rem 0 0;
-  font-size: 0.88rem;
-  color: var(--global-text-color-light);
+  font-size: 0.968rem;
+  color: var(--global-text-color);
+  font-family: "SimHei", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
 }
 
 .jobs-qr {

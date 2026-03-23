@@ -16,7 +16,9 @@ layout: page
   {% endif %}
   {% include equipment/gallery.liquid items=lab.items %}
 
-  <h2>{{ workspace.title | default: '工作环境照片' }}</h2>
+  {% if workspace.title and workspace.title != blank %}
+    <h2>{{ workspace.title }}</h2>
+  {% endif %}
   {% if workspace.description %}
     <p class="text-muted">{{ workspace.description }}</p>
   {% endif %}

@@ -24,7 +24,7 @@ equipment:
         alt: 跨域航行器 Teleaqua-Bee 水下测试
         caption: 跨域航行器 Teleaqua-Bee 水下测试，评估浮沉控制与表面扰动适应能力
   workspace:
-    title: 工作环境照片
+    title:
     items:
       - src: /assets/equipment/white-water-robot-remote-control-test.jpg
         alt: 跨域航行器 Teleaqua-H4Z 水面测试

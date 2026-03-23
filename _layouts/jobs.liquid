@@ -18,6 +18,7 @@ layout: page
 {% assign section_intro = jobs.section_intro | default: empty %}
 {% assign empty_text = jobs.empty_text | default: '暂无开放岗位，欢迎通过邮件联系。' %}
 {% assign apply_title = jobs.apply_title | default: '申请方式' %}
+{% assign apply_subtitle = apply.subtitle | default: empty %}
 {% assign apply_note = apply.note | default: '扫码或点击 Boss 直聘投递。' %}
 
 <div class="jobs-page">
@@ -74,6 +75,9 @@ layout: page
         <div class="col-lg-4 jobs-main-right">
           <aside class="jobs-apply-card" aria-label="申请方式" id="jobs-apply">
             <h3 class="jobs-apply-title">{{ apply_title }}</h3>
+            {% if apply_subtitle != blank %}
+              <p class="jobs-apply-subtitle">{{ apply_subtitle }}</p>
+            {% endif %}
 
             <div class="jobs-qr">
               {% if apply and apply.qr and apply.qr.image %}

@@ -227,18 +227,21 @@ publications:
         venue: Optics Express 32 (8), 13224-13234
         doi: 10.1364/OE.510683
         doi_link: false
+        image: assets/img/publication_preview/2024-multi-input-mutual-supervision-network.jpg
         year: 2024
       - title: Underwater Single-pixel Imaging Method Based on Object Search and Detail Enhancement
         authors: Y Chen, Z Sun, X Li
         venue: Acta Photonica Sinica 53 (4), 0401001
         doi: 10.3788/gzxb20245304.0401001
         doi_link: false
+        image: assets/img/publication_preview/2024-underwater-single-pixel.jpg
         year: 2024
       - title: Part-based image-loop network for single-pixel imaging
         authors: X Li, Y Chen, T Tian, Z Sun
         venue: Optics & Laser Technology 168, 109917
         doi: 10.1016/j.optlastec.2023.109917
         doi_link: false
+        image: assets/img/publication_preview/2024-Part-based.jpg
         year: 2024
 ---
 
