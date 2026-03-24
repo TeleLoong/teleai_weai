@@ -3,14 +3,14 @@ const ninja = document.querySelector('ninja-keys');
 
 // add the home and posts menu items
 ninja.data = [{
-    id: "nav-主页",
-    title: "主页",
+    id: "nav-团队主页",
+    title: "团队主页",
     section: "Navigation",
     handler: () => {
       window.location.href = "/teleai/";
     },
-  },{id: "nav-团队",
-          title: "团队",
+  },{id: "nav-研究团队",
+          title: "研究团队",
           description: "团队成员信息。",
           section: "Navigation",
           handler: () => {
@@ -37,8 +37,8 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/teleai/reports/";
           },
-        },{id: "nav-设备",
-          title: "设备",
+        },{id: "nav-实验设备",
+          title: "实验设备",
           description: "",
           section: "Navigation",
           handler: () => {
