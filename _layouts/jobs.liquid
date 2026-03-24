@@ -4,6 +4,8 @@ layout: page
 {% assign jobs = page.jobs | default: empty %}
 {% assign hero = jobs.hero | default: empty %}
 {% assign apply = jobs.apply | default: empty %}
+{% assign why_join = jobs.why_join | default: empty %}
+{% assign why_join_items = why_join.items | default: empty %}
 {% assign roles = jobs.roles | default: empty %}
 {% assign has_roles = false %}
 {% if roles.size > 0 %}
@@ -36,6 +38,26 @@ layout: page
     <div class="container jobs-shell">
       <div class="row">
         <div class="col-lg-8 jobs-main-left">
+          {% if why_join_items.size > 0 %}
+            <section class="jobs-why-join" aria-labelledby="jobs-why-join-title">
+              <h2 class="jobs-section-title jobs-why-join-title" id="jobs-why-join-title">
+                {{ why_join.title | default: '为什么加入 TeleAI 涉水具身智能团队' }}
+              </h2>
+              <div class="jobs-why-join-list">
+                {% for item in why_join_items %}
+                  <article class="jobs-why-join-item">
+                    {% if item.title != blank %}
+                      <h3 class="jobs-why-join-item-title">{{ item.title }}</h3>
+                    {% endif %}
+                    {% if item.description != blank %}
+                      <p class="jobs-why-join-item-text">{{ item.description }}</p>
+                    {% endif %}
+                  </article>
+                {% endfor %}
+              </div>
+            </section>
+          {% endif %}
+
           <h2 class="jobs-section-title" id="jobs-jd">{{ section_title }}</h2>
           {% if section_intro != blank %}
             <p class="jobs-section-intro">{{ section_intro }}</p>

@@ -155,6 +155,40 @@
   letter-spacing: -0.015em;
 }
 
+.jobs-why-join {
+  margin-bottom: 1.85rem;
+}
+
+.jobs-why-join-list {
+  border: 1px solid color-mix(in srgb, var(--global-divider-color) 90%, transparent);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--jobs-surface) 96%, transparent);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.jobs-why-join-item {
+  padding: 1.05rem 1.15rem 1.1rem;
+}
+
+.jobs-why-join-item + .jobs-why-join-item {
+  border-top: 1px solid color-mix(in srgb, var(--global-divider-color) 90%, transparent);
+}
+
+.jobs-why-join-item-title {
+  margin: 0 0 0.35rem;
+  font-size: 0.96rem;
+  font-weight: 760;
+  letter-spacing: -0.012em;
+  color: var(--jobs-accent-ink);
+}
+
+.jobs-why-join-item-text {
+  margin: 0;
+  line-height: 1.72;
+  color: var(--global-text-color);
+}
+
 .jobs-role-card {
   border: 1px solid color-mix(in srgb, var(--global-divider-color) 92%, transparent);
   border-radius: 18px;
