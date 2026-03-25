@@ -51,7 +51,7 @@ team:
             - label: Google Scholar
               url: https://scholar.google.com/citations?user=9XGQQ8MAAAAJ&hl=en
           bio: >
-            浙江大学博士，主要负责算法开发。曾任中国航空无线电电子研究所应用技术研究师。研究方向为计算机视觉、无人机视觉
+            高级研究员，浙江大学博士，主要负责算法开发。曾任中国航空无线电电子研究所应用技术研究师。研究方向为计算机视觉、无人机视觉
         - id: teacher_yaokanzhong
           name: 姚衎仲
           role: 高级研究员
@@ -80,7 +80,7 @@ team:
             - label: Google Scholar
               url: https://scholar.google.com/citations?user=l5DNY8cAAAAJ&hl=zh-CN
           bio: >
-            西北工业大学博士，主要负责算法开发。研究方向为深度学习与水下计算成像技术
+            中国电信人工智能研究院（TeleAI）/复旦大学博士后，西北工业大学博士，主要负责算法开发。研究方向为深度学习与水下计算成像技术
         - id: teacher_biyuanbo
           name: 毕鸢博
           role: 高级研究员
@@ -97,14 +97,14 @@ team:
           subtitle: 强化学习
           image: assets/team/wangjiaguo.jpg
           bio: >
-            西北工业大学博士，帝国理工学院硕士，主要从事强化学习及机器人/无人机系统硬件研发。研究方向为机器人与无人机系统硬件研发
+            高级工程师，西北工业大学博士，帝国理工学院硕士，主要从事强化学习及机器人/无人机系统硬件研发。研究方向为机器人与无人机系统硬件研发
         - id: teacher_pengzimeng
           name: 彭子蒙
           role: 高级工程师
           subtitle: 机器人设计
           image: assets/team/pengzimeng.jpg
           bio: >
-            北京航空航天大学硕士，曾任中国航空无线电电子研究所工程师。研究方向为水下机器人系统设计
+            高级工程师，北京航空航天大学硕士，曾任中国航空无线电电子研究所工程师。研究方向为水下机器人系统设计
         - id: teacher_liyuliang
           name: 李育亮
           role: 高级工程师
