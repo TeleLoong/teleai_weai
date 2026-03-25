@@ -10,6 +10,7 @@ main_container_class: "container mt-3"
 baidu_map:
   enabled: true
   address: 上海市徐汇区龙文路199号国际传媒港F1座30层
+  open_query: 中国电信人工智能研究院
   title: TeleAI 涉水具身智能团队
   zoom: 18
   height: 420px
@@ -75,6 +76,7 @@ _styles: |
     position: absolute;
     right: 1rem;
     bottom: 1rem;
+    z-index: 2;
     margin: 0;
     padding: 0.45rem 0.85rem;
     border-radius: 999px;
@@ -130,17 +132,18 @@ _styles: |
       alt="办公地址地图"
       class="img-fluid z-depth-1"
     %}
-    <p class="contact-map-actions">
-      <a
-        class="contact-map-link"
-        href="https://map.baidu.com/search/{{ page.baidu_map.address | uri_escape }}"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        在百度地图打开
-      </a>
-    </p>
   </div>
+
+  <p class="contact-map-actions">
+    <a
+      class="contact-map-link"
+      href="https://api.map.baidu.com/geocoder?address={{ page.baidu_map.open_query | default: page.baidu_map.address | uri_escape }}&output=html"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      在百度地图打开
+    </a>
+  </p>
 </div>
 
 ## 招生与合作
