@@ -93,18 +93,25 @@ team:
             高级研究员，主要负责算法开发。上海交通大学博士。研究方向为海空两栖航行器设计与跨域策略
         - id: teacher_wangjiaguo
           name: 王家国
-          role: 工程师
+          role: 高级工程师
           subtitle: 强化学习
           image: assets/team/wangjiaguo.jpg
           bio: >
             西北工业大学博士，帝国理工学院硕士，主要从事强化学习及机器人/无人机系统硬件研发。研究方向为机器人与无人机系统硬件研发
         - id: teacher_pengzimeng
           name: 彭子蒙
-          role: 工程师
+          role: 高级工程师
           subtitle: 机器人设计
           image: assets/team/pengzimeng.jpg
           bio: >
             北京航空航天大学硕士，曾任中国航空无线电电子研究所工程师。研究方向为水下机器人系统设计
+        - id: teacher_liyuliang
+          name: 李育亮
+          role: 高级工程师
+          subtitle: 光学感知与成像
+          image: assets/team/liyuliang.jpg
+          bio: >
+            高级工程师，主要负责水下光学感知与成像。浙江大学海洋学院与东海实验室博士后，中国科学院上海光学精密机械研究所博士。研究方向为水下激光关联成像、低慢小目标光电探测与跟踪
     - id: phd
       title: 博士研究生
       members:
