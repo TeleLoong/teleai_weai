@@ -14,6 +14,11 @@
     opacity: 0.95;
   }
 
+  .team-group--phd .team-group-title,
+  .team-group--ms .team-group-title {
+    margin-bottom: 1.4rem;
+  }
+
   .team-group--fixed-three .team-grid-fixed-three {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -33,12 +38,29 @@
     justify-items: center;
   }
 
+  .team-group--phd .team-grid-fixed-three,
+  .team-group--ms .team-grid-fixed-three {
+    justify-items: center;
+  }
+
   .team-group--teachers .team-grid-fixed-three__item {
     display: flex;
     justify-content: center;
   }
 
+  .team-group--phd .team-grid-fixed-three__item,
+  .team-group--ms .team-grid-fixed-three__item {
+    display: flex;
+    justify-content: center;
+  }
+
   .team-group--teachers .team-card {
+    width: 100%;
+    max-width: 210px;
+  }
+
+  .team-group--phd .team-card,
+  .team-group--ms .team-card {
     width: 100%;
     max-width: 210px;
   }
@@ -61,6 +83,12 @@
   }
 
   .team-group--teachers .team-card-body {
+    width: 210px;
+    margin: 0 auto;
+  }
+
+  .team-group--phd .team-card-body,
+  .team-group--ms .team-card-body {
     width: 210px;
     margin: 0 auto;
   }
@@ -167,6 +195,10 @@
   text-align: center;
 }
 
+.team-card--student {
+  text-align: center;
+}
+
 .team-card-img img {
   width: 100%;
   height: 210px;
@@ -191,6 +223,20 @@
   margin-top: 0.15rem;
   font-weight: 650;
   opacity: 0.9;
+}
+
+.team-card--student .team-card-body {
+  padding-top: 0;
+}
+
+.team-card--student .team-card-name {
+  font-size: 1.12rem;
+  line-height: 1.35;
+}
+
+.team-card--student .team-card-role {
+  margin-top: 0.35rem;
+  font-size: 1.1em;
 }
 
 .team-card-subtitle {
@@ -399,6 +445,18 @@
     font-size: 0.78rem;
     line-height: 1.15;
     overflow-wrap: anywhere;
+  }
+
+  .team-page .team-group--phd .team-card-name,
+  .team-page .team-group--ms .team-card-name {
+    font-size: 0.98rem;
+    line-height: 1.3;
+  }
+
+  .team-page .team-group--phd .team-card-role,
+  .team-page .team-group--ms .team-card-role {
+    font-size: 1.1em;
+    line-height: 1.2;
   }
 
   .team-card--lead {

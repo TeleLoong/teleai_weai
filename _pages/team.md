@@ -116,43 +116,38 @@ team:
       title: 博士研究生
       members:
         - id: member_a
-          name: Alice Zhang
+          name: 王亮
           role: 博士研究生
-          subtitle: "Perception / Field Robotics"
-          image: assets/img/1.jpg
-          links:
-            - label: Homepage
-              url: https://example.com
-            - label: Google Scholar
-              url: https://scholar.google.com/
         - id: member_b
-          name: Bob Li
+          name: 江雨秋
           role: 博士研究生
-          subtitle: "Planning / Autonomy"
-          image: assets/img/10.jpg
         - id: member_d
-          name: David Chen
+          name: 宋洪豪
           role: 博士研究生
-          subtitle: "Marine Perception / Vision"
-          image: assets/img/7.jpg
+        - id: member_g
+          name: 李俊粤
+          role: 博士研究生
+        - id: member_h
+          name: 陈力进
+          role: 博士研究生
+        - id: member_i
+          name: 鲁基俊
+          role: 博士研究生
+        - id: member_j
+          name: 刘瑛琪
+          role: 博士研究生
+        - id: member_k
+          name: 仇茂盛
+          role: 博士研究生
     - id: ms
       title: 硕士研究生
       members:
         - id: member_c
-          name: Carol Wang
+          name: 赵昊飞
           role: 硕士研究生
-          subtitle: "Controls / Systems"
-          image: assets/img/3.jpg
         - id: member_e
-          name: Evan Liu
+          name: 肖建功
           role: 硕士研究生
-          subtitle: "Embedded AI / Hardware"
-          image: assets/img/6.jpg
-        - id: member_f
-          name: Fiona Sun
-          role: 硕士研究生
-          subtitle: "Field Deployment / Testing"
-          image: assets/img/5.jpg
     - id: ug
       title: Undergraduate
       members: []

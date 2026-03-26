@@ -1,9 +1,15 @@
 {% assign member = include.member %}
 {% assign variant = include.variant | default: 'default' %}
+{% assign show_image = true %}
+{% assign show_links = true %}
+{% if variant == 'student' %}
+  {% assign show_image = false %}
+  {% assign show_links = false %}
+{% endif %}
 {% assign image_path = member.image | default: 'assets/img/TeleAi.jpg' %}
 {% assign member_homepage_url = '' %}
 {% assign member_scholar_url = '' %}
-{% if member.links and member.links.size > 0 %}
+{% if show_links and member.links and member.links.size > 0 %}
   {% for link in member.links %}
     {% assign link_label = link.label | default: '' | strip | downcase %}
     {% if link.url and link_label == 'homepage' %}
@@ -20,17 +26,19 @@
 {% endif %}
 
 <div class="team-card team-card--{{ variant }}">
-  <div class="team-card-image">
-    {%
-      include figure.liquid
-      loading="lazy"
-      path=image_path
-      sizes=image_sizes
-      alt=member.name
-      class="team-card-img"
-      cache_bust=true
-    %}
-  </div>
+  {% if show_image %}
+    <div class="team-card-image">
+      {%
+        include figure.liquid
+        loading="lazy"
+        path=image_path
+        sizes=image_sizes
+        alt=member.name
+        class="team-card-img"
+        cache_bust=true
+      %}
+    </div>
+  {% endif %}
 
   <div class="team-card-body">
     {% if variant == 'lead' %}
@@ -53,24 +61,26 @@
       </div>
     {% endif %}
 
-    <div class="team-card-links" aria-label="Member links">
-      <div class="team-card-links-inline">
-        {% if member_homepage_url != '' %}
-          <a class="team-card-link team-card-link--text" href="{{ member_homepage_url }}" target="_blank" rel="noopener noreferrer"> Homepage </a>
-        {% else %}
-          <span class="team-card-link team-card-link--disabled">Homepage</span>
-        {% endif %}
+    {% if show_links %}
+      <div class="team-card-links" aria-label="Member links">
+        <div class="team-card-links-inline">
+          {% if member_homepage_url != '' %}
+            <a class="team-card-link team-card-link--text" href="{{ member_homepage_url }}" target="_blank" rel="noopener noreferrer"> Homepage </a>
+          {% else %}
+            <span class="team-card-link team-card-link--disabled">Homepage</span>
+          {% endif %}
 
-        <span class="team-card-link-separator" aria-hidden="true">·</span>
+          <span class="team-card-link-separator" aria-hidden="true">·</span>
 
-        {% if member_scholar_url != '' %}
-          <a class="team-card-link team-card-link--text" href="{{ member_scholar_url }}" target="_blank" rel="noopener noreferrer">
-            Google Scholar
-          </a>
-        {% else %}
-          <span class="team-card-link team-card-link--disabled">Google Scholar</span>
-        {% endif %}
+          {% if member_scholar_url != '' %}
+            <a class="team-card-link team-card-link--text" href="{{ member_scholar_url }}" target="_blank" rel="noopener noreferrer">
+              Google Scholar
+            </a>
+          {% else %}
+            <span class="team-card-link team-card-link--disabled">Google Scholar</span>
+          {% endif %}
+        </div>
       </div>
-    </div>
+    {% endif %}
   </div>
 </div>

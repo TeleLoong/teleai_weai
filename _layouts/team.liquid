@@ -3,6 +3,7 @@ layout: page
 ---
 {% assign team = page.team | default: empty %}
 {% assign fixed_grid_group_ids = 'teachers|phd|ms' | split: '|' %}
+{% assign text_only_group_ids = 'phd|ms' | split: '|' %}
 {% assign has_current_members = false %}
 {% if team.groups %}
   {% for group in team.groups %}
@@ -62,7 +63,11 @@ layout: page
               <div class="team-grid-fixed-three">
                 {% for member in group_members %}
                   <div class="team-grid-fixed-three__item">
-                    {% include team/member_card.liquid member=member %}
+                    {% if text_only_group_ids contains group.id %}
+                      {% include team/member_card.liquid member=member variant="student" %}
+                    {% else %}
+                      {% include team/member_card.liquid member=member %}
+                    {% endif %}
                   </div>
                 {% endfor %}
 
@@ -79,7 +84,11 @@ layout: page
               <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3">
                 {% for member in group_members %}
                   <div class="col mb-4">
-                    {% include team/member_card.liquid member=member %}
+                    {% if text_only_group_ids contains group.id %}
+                      {% include team/member_card.liquid member=member variant="student" %}
+                    {% else %}
+                      {% include team/member_card.liquid member=member %}
+                    {% endif %}
                   </div>
                 {% endfor %}
               </div>
