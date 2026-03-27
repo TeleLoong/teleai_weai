@@ -1,6 +1,6 @@
 # TeleAI 网站维护手册
 
-这份文档是当前 TeleAI 涉水具身智能团队网站的日常维护说明，面向“不太懂代码但需要更新网站内容”的维护者。
+这份文档是当前 TeleAI 涉水具身智能团队网站的日常维护说明。
 
 这个网站基于 [al-folio](https://github.com/alshedivat/al-folio) 和 Jekyll 搭建。你不需要先学会 Jekyll 才能改内容，只要先搞清楚下面 4 个原则：
 
