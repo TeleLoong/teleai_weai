@@ -252,10 +252,10 @@ npx prettier . --write
 **最常用字段**
 
 - 负责人：`team.lead`
-- 全职老师 / 工程师：`team.groups` 里 `id: teachers`
+- 全职研究员 / 工程师：`team.groups` 里 `id: teachers`
 - 博士生：`team.groups` 里 `id: phd`
 - 硕士生：`team.groups` 里 `id: ms`
-- 校友：`team.alumni_groups`
+
 
 每位成员常见字段：
 
