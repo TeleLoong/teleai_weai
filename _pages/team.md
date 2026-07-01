@@ -74,13 +74,13 @@ team:
         - id: teacher_chenyifan
           name: 陈翼钒
           role: 博士后
-          subtitle: 深度学习
+          subtitle: 人工智能
           image: assets/team/chenyifan.jpg
           links:
             - label: Google Scholar
               url: https://scholar.google.com/citations?user=l5DNY8cAAAAJ&hl=zh-CN
           bio: >
-            中国电信人工智能研究院（TeleAI）/复旦大学博士后，西北工业大学博士，主要负责算法开发。研究方向为深度学习与水下图像信息处理
+            中国电信人工智能研究院（TeleAI）/复旦大学博士后，西北工业大学博士，主要负责算法开发。研究方向为计算机视觉
         - id: teacher_biyuanbo
           name: 毕鸢博
           role: 高级研究员
