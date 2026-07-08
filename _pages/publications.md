@@ -24,6 +24,10 @@ publications:
         mp4: /assets/publication/深海相机+机械臂demo20260211-web.mp4
         poster: /assets/publication/深海相机+机械臂demo20260211-poster.jpg
         preload: metadata
+      - title: 智传网空海跨域智能 demo
+        mp4: /assets/publication/underwater_demo_web.mp4
+        poster: /assets/publication/underwater_demo_poster.png
+        preload: metadata
   projects:
     title: 项目
     empty_text: 暂无项目内容。
