@@ -19,7 +19,7 @@ reports:
     items:
       - title: "央视财经频道采访：智能伙伴，共创未来"
         date: "2026-07-19"
-        playback: "/assets/reports/央视财经频道采访：智能伙伴，共创未来.mp4"
+        playback: "/assets/reports/央视财经频道采访.mp4"
       - title: "央视CGTN年度系列纪录片《澎湃中国》讲述我校师生的奋斗故事"
         date: "2024-09-20"
         playback: "/assets/reports/20240920-央视CGTN年度系列纪录片《澎湃中国》讲述我校师生的奋斗故事-西北工业大学.mp4"
