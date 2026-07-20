@@ -17,6 +17,9 @@ reports:
     aria_label: 视频报道时间轴
     empty_text: 暂无视频报道，后续将在这里持续更新。
     items:
+      - title: "中国“智传网”获全球AI大奖"
+        date: "2026-07-20"
+        playback: "/assets/reports/中国智传网获全球AI大奖.mp4"
       - title: "央视财经频道采访：智能伙伴，共创未来"
         date: "2026-07-19"
         playback: "/assets/reports/央视财经频道采访.mp4"
