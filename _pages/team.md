@@ -95,7 +95,7 @@ team:
           subtitle: 机器人设计
           image: assets/team/jiangzhengyi.jpg
           bio: >
-            高级研究员，主要负责机器人设计，英国曼彻斯特大学博士及博士后，曾任英国及日本原子能机构 Fellow、英国Ice Nine Robotics高级工程师。主要从事核退役及极端环境机器人和自动化装备的研发。
+            高级研究员，主要负责机器人设计。英国曼彻斯特大学博士及博士后，曾任英国及日本原子能机构 Fellow、英国Ice Nine Robotics高级工程师。研究方向为核退役及极端环境机器人和自动化装备的研发
     - id: phd
       title: 博士研究生
       members:
