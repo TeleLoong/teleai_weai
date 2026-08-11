@@ -90,6 +90,12 @@ team:
           image: assets/team/liyuliang.jpg
           bio: >
             高级工程师，主要负责水下光学感知与成像。浙江大学海洋学院与东海实验室博士后，中国科学院上海光学精密机械研究所博士。研究方向为水下激光关联成像、低慢小目标光电探测与跟踪
+        - id: teacher_jiangzhengyi
+          name: 蒋 高级研究员
+          subtitle: 机器人设计
+          image: assets/team/jiangzhengyi.jpg
+          bio: >
+            高级研究员，主要负责机器人设计，英国曼彻斯特大学博士及博士后，曾任英国及日本原子能机构 Fellow、英国Ice Nine Robotics高级工程师。主要从事核退役及极端环境机器人和自动化装备的研发。
     - id: phd
       title: 博士研究生
       members:
