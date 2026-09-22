@@ -30,7 +30,7 @@ team:
     name: "孙哲"
     role: TeleAI研究科学家（双聘）、PI
     subtitle: "西北工业大学副教授"
-    image: assets/team/sun-laoshi.jpg
+    image: assets/team/sun.png
     links:
       - label: Homepage
         url: https://teacher.nwpu.edu.cn/2022010060.html
