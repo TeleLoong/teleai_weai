@@ -131,17 +131,33 @@ team:
           name: 仇同学
           subtitle: 西北工业大学
           bio: 水下视觉、水下机械臂
+        - id: member_l
+          name: 罗同学
+          subtitle: 浙江大学
+          bio: 机器人运动控制
+        - id: member_m
+          name: 林同学
+          subtitle: 浙江大学
+          bio: 机器人运动控制
+        - id: member_n
+          name: 穆同学
+          subtitle: 上海交通大学
+          bio: 空海跨域
+        - id: member_o
+          name: 王同学
+          subtitle: 复旦大学
+          bio: 机械臂VLA
     - id: ms
       title: 硕士研究生
       members:
         - id: member_c
-          name: 赵同学
+          name: 黄同学
           subtitle: 西北工业大学
-          bio: 嵌入式开发、水下激光探测
+          bio: 机器视觉
         - id: member_e
-          name: 肖同学
-          subtitle: 西北工业大学
-          bio: 跨介质目标跟踪
+          name: 李同学
+          subtitle: 复旦大学
+          bio: 机器视觉
     - id: ug
       title: Undergraduate
       members: []
