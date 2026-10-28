@@ -28,7 +28,7 @@ jobs:
   empty_text: 暂无开放岗位，欢迎通过邮件联系。
   apply:
     subtitle: 请关注“具身智能”-[水下]方向
-    note: 可通过 TeleAI 社招门户或 Boss 直聘查看岗位详情并投递。
+    note: 可通过 TeleAI 社招门户或扫码查看岗位详情并投递。
     boss:
       label: TeleAI 社招门户
       url: "https://app.mokahr.com/social-recruitment/teleai/188059?locale=zh-CN"
