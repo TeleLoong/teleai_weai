@@ -28,7 +28,7 @@ jobs:
   empty_text: 暂无开放岗位，欢迎通过邮件联系。
   apply:
     subtitle: 请关注“具身智能”-[水下]方向
-    note: 扫码或点击 Boss 直聘投递。
+    note: 可通过 TeleAI 社招门户或 Boss 直聘查看岗位详情并投递。
     boss:
       label: Boss 直聘
       url: "https://www.zhipin.com/gongsi/job/fab0d9bb1adb44d51HJ93N28GVI~.html?ka=company-jobs"
@@ -72,5 +72,5 @@ jobs:
         - 机器人系统
       summary: 欢迎硕士/博士研究生通过联合培养方式参与课题研究与系统研发
       jd: |
-        欢迎优秀的同学发邮件联系： sunzhe@nwpu.edu.cn
+        欢迎优秀的同学发邮件联系： sunzhe.weai@outlook.com
 ---
