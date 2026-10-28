@@ -35,6 +35,12 @@ jobs:
     qr:
       image: assets/img/jobs-qr.png
       alt: 扫码投递（Boss 直聘）
+    social:
+      label: TeleAI 社招门户
+      url: "https://app.mokahr.com/social-recruitment/teleai/188059?locale=zh-CN"
+      qr:
+        image: assets/img/社招.png
+        alt: 扫码投递（TeleAI 社招门户）
   roles:
     - id: phd
       title: 全职
